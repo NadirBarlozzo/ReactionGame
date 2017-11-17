@@ -1,1 +1,0 @@
-As the use of machines and robots to increase physical performances in sport competitions increases more people approach the subject everyday. We were asked to recreate a Batak machine and in this documentation will go through the development of it.
