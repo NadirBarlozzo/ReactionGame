@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?><project name="Untitled Gantt Project" company="" webLink="http://" view-date="2017-10-02" view-index="0" gantt-divider-location="457" resource-divider-location="300" version="2.8.5" locale="it">
+<?xml version="1.0" encoding="UTF-8"?><project name="Untitled Gantt Project" company="" webLink="http://" view-date="2017-10-30" view-index="0" gantt-divider-location="457" resource-divider-location="300" version="2.8.5" locale="it">
     <description/>
-    <view zooming-state="default:2" id="gantt-chart">
-        <field id="tpd3" name="Nome" width="229" order="0"/>
-        <field id="tpd4" name="Data d'inizio" width="105" order="1"/>
+    <view zooming-state="default:0" id="gantt-chart">
+        <field id="tpd3" name="Nome" width="273" order="0"/>
+        <field id="tpd4" name="Data d'inizio" width="61" order="1"/>
         <field id="tpd5" name="Data di fine" width="104" order="2"/>
         <option id="color.recent"><![CDATA[#ff00ff #33ffcc #f4f4f4 #00cc33 #ff9900 #0066ff #ff0000 #000000]]></option>
     </view>
@@ -38,15 +38,14 @@
             <task id="9" name="intervista con il cliente" color="#00cc33" meeting="false" start="2017-11-10" duration="1" complete="0" expand="true"/>
             <task id="15" name="risoluzione dei dubbi" color="#00cc33" meeting="false" start="2017-11-17" duration="1" complete="0" expand="true"/>
             <task id="16" name="analisi del dominio" color="#00cc33" meeting="false" start="2017-11-10" duration="1" complete="0" expand="true"/>
-            <task id="17" name="analisi dei requisiti" color="#00cc33" meeting="false" start="2017-11-17" duration="1" complete="0" expand="true"/>
+            <task id="17" name="analisi dei requisiti" color="#00cc33" meeting="false" start="2017-11-17" duration="2" complete="0" expand="true"/>
             <task id="18" name="analisi costi e benefici" color="#00cc33" meeting="false" start="2017-11-24" duration="1" complete="0" expand="true"/>
-            <task id="19" name="documento di specifica" color="#00cc33" meeting="false" start="2017-11-24" duration="1" complete="0" expand="true"/>
             <task id="20" name="documento specifica completato" color="#00cc33" meeting="true" start="2017-11-24" duration="0" complete="0" expand="true"/>
         </task>
         <task id="4" name="Progettazione" meeting="false" start="2017-11-10" duration="5" complete="0" expand="true">
             <task id="10" name="schemi modalità" color="#ff0000" meeting="false" start="2017-11-10" duration="1" complete="0" expand="true"/>
             <task id="22" name="datasheet bottone led" color="#ff0000" meeting="false" start="2017-11-17" duration="1" complete="0" expand="true"/>
-            <task id="23" name="schema E-R del database" color="#ff0000" meeting="false" start="2017-12-01" duration="1" complete="0" expand="true"/>
+            <task id="23" name="schema E-R del database" color="#ff0000" meeting="false" start="2017-11-24" duration="1" complete="0" expand="true"/>
             <task id="25" name="diagramma delle classi" color="#ff0000" meeting="false" start="2017-11-24" duration="1" complete="0" expand="true"/>
             <task id="26" name="architettura del sistema" color="#ff0000" meeting="false" start="2017-12-08" duration="1" complete="0" expand="true"/>
             <task id="45" name="ricerca materiale fisico" color="#ff0000" meeting="false" start="2017-11-17" duration="3" complete="0" expand="true"/>
@@ -83,8 +82,7 @@
             </task>
             <task id="61" name="creazione database" color="#0066ff" meeting="false" start="2017-12-22" duration="4" complete="0" expand="true"/>
         </task>
-        <task id="6" name="Integrazione" meeting="false" start="2017-12-22" duration="4" complete="0" expand="true">
-            <task id="13" name="collegamento fisico logico" color="#ff9900" meeting="false" start="2017-12-22" duration="1" complete="0" expand="true"/>
+        <task id="6" name="Integrazione" meeting="false" start="2018-01-12" duration="1" complete="0" expand="true">
             <task id="111" name="collegamento logico database" color="#ff9900" meeting="false" start="2018-01-12" duration="1" complete="0" expand="true"/>
             <task id="114" name="collegamenti completati" color="#ff9900" meeting="true" start="2018-01-12" duration="0" complete="0" expand="true"/>
         </task>
@@ -106,7 +104,9 @@
                 <task id="91" name="test modalità 14" color="#33ffcc" meeting="false" start="2017-12-22" duration="1" complete="0" expand="true"/>
                 <task id="93" name="test modalità 15" color="#33ffcc" meeting="false" start="2017-12-22" duration="1" complete="0" expand="true"/>
                 <task id="95" name="test modalità 16" color="#33ffcc" meeting="false" start="2017-12-22" duration="1" complete="0" expand="true"/>
-                <task id="97" name="test modalità 17" color="#33ffcc" meeting="false" start="2017-12-22" duration="1" complete="0" expand="true"/>
+                <task id="97" name="test modalità 17" color="#33ffcc" meeting="false" start="2017-12-22" duration="1" complete="0" expand="true">
+                    <task id="198" name="collegamento fisico logico" color="#ff9900" meeting="false" start="2017-12-22" duration="1" complete="0" expand="true"/>
+                </task>
                 <task id="99" name="test modalità 18" color="#33ffcc" meeting="false" start="2017-12-22" duration="1" complete="0" expand="true"/>
                 <task id="101" name="test modalità 19" color="#33ffcc" meeting="false" start="2017-12-22" duration="1" complete="0" expand="true"/>
                 <task id="103" name="test modalità 20" color="#33ffcc" meeting="false" start="2017-12-22" duration="1" complete="0" expand="true"/>
