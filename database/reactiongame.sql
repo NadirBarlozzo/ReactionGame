@@ -23,14 +23,50 @@ CREATE TABLE IF NOT EXISTS `giocatore` (
   PRIMARY KEY (`Gio_ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
--- L’esportazione dei dati non era selezionata.
+-- Dump dei dati della tabella reactiongame.giocatore: ~4 rows (circa)
+/*!40000 ALTER TABLE `giocatore` DISABLE KEYS */;
+REPLACE INTO `giocatore` (`Gio_ID`, `Gio_Nome`) VALUES
+	(1, 'a'),
+	(2, 'b'),
+	(3, 'c'),
+	(4, 'd'),
+	(5, 'e');
+/*!40000 ALTER TABLE `giocatore` ENABLE KEYS */;
+
 -- Dump della struttura di tabella reactiongame.modalita
 CREATE TABLE IF NOT EXISTS `modalita` (
   `Mod_ID` int(11) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`Mod_ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
 
--- L’esportazione dei dati non era selezionata.
+-- Dump dei dati della tabella reactiongame.modalita: ~19 rows (circa)
+/*!40000 ALTER TABLE `modalita` DISABLE KEYS */;
+REPLACE INTO `modalita` (`Mod_ID`) VALUES
+	(1),
+	(2),
+	(3),
+	(4),
+	(5),
+	(6),
+	(7),
+	(8),
+	(9),
+	(10),
+	(11),
+	(12),
+	(13),
+	(14),
+	(15),
+	(16),
+	(17),
+	(18),
+	(19),
+	(20),
+	(21),
+	(22),
+	(23);
+/*!40000 ALTER TABLE `modalita` ENABLE KEYS */;
+
 -- Dump della struttura di tabella reactiongame.utilizza
 CREATE TABLE IF NOT EXISTS `utilizza` (
   `punteggio` int(11) DEFAULT NULL,
@@ -43,7 +79,12 @@ CREATE TABLE IF NOT EXISTS `utilizza` (
   CONSTRAINT `FK_utlizza_modalita` FOREIGN KEY (`Mod_IDModalita`) REFERENCES `modalita` (`Mod_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- L’esportazione dei dati non era selezionata.
+-- Dump dei dati della tabella reactiongame.utilizza: ~0 rows (circa)
+/*!40000 ALTER TABLE `utilizza` DISABLE KEYS */;
+REPLACE INTO `utilizza` (`punteggio`, `Gio_IDGiocatore`, `Mod_IDModalita`) VALUES
+	(600, 5, 15);
+/*!40000 ALTER TABLE `utilizza` ENABLE KEYS */;
+
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
