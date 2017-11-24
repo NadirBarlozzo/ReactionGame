@@ -1,11 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?><project name="Untitled Gantt Project" company="" webLink="http://" view-date="2017-12-18" view-index="0" gantt-divider-location="457" resource-divider-location="300" version="2.8.5" locale="it">
+<?xml version="1.0" encoding="UTF-8"?><project name="Untitled Gantt Project" company="" webLink="http://" view-date="2017-10-02" view-index="0" gantt-divider-location="457" resource-divider-location="300" version="2.8.5" locale="it">
     <description/>
-    <view zooming-state="default:6" id="gantt-chart">
+    <view zooming-state="default:2" id="gantt-chart">
         <field id="tpd3" name="Nome" width="229" order="0"/>
         <field id="tpd4" name="Data d'inizio" width="105" order="1"/>
         <field id="tpd5" name="Data di fine" width="104" order="2"/>
-        <option id="taskLabelUp" value=""/>
-        <option id="taskLabelDown" value=""/>
+        <option id="color.recent"><![CDATA[#ff00ff #33ffcc #f4f4f4 #00cc33 #ff9900 #0066ff #ff0000 #000000]]></option>
     </view>
     <view id="resource-table">
         <field id="0" name="Nome" width="210" order="0"/>
@@ -36,91 +35,92 @@
             <taskproperty id="tpd9" name="predecessorsr" type="default" valuetype="text"/>
         </taskproperties>
         <task id="3" name="Analisi" meeting="false" start="2017-11-10" duration="3" complete="0" expand="true">
-            <task id="9" name="intervista con il cliente" meeting="false" start="2017-11-10" duration="1" complete="0" expand="true"/>
-            <task id="15" name="risoluzione dei dubbi" meeting="false" start="2017-11-17" duration="1" complete="0" expand="true"/>
-            <task id="16" name="analisi del dominio" meeting="false" start="2017-11-10" duration="1" complete="0" expand="true"/>
-            <task id="17" name="analisi dei requisiti" meeting="false" start="2017-11-17" duration="1" complete="0" expand="true"/>
-            <task id="18" name="analisi costi e benefici" meeting="false" start="2017-11-24" duration="1" complete="0" expand="true"/>
-            <task id="19" name="documento di specifica" meeting="false" start="2017-11-24" duration="1" complete="0" expand="true"/>
-            <task id="20" name="documento specifica completato" color="#0099cc" meeting="true" start="2017-11-24" duration="0" complete="0" expand="true"/>
+            <task id="9" name="intervista con il cliente" color="#00cc33" meeting="false" start="2017-11-10" duration="1" complete="0" expand="true"/>
+            <task id="15" name="risoluzione dei dubbi" color="#00cc33" meeting="false" start="2017-11-17" duration="1" complete="0" expand="true"/>
+            <task id="16" name="analisi del dominio" color="#00cc33" meeting="false" start="2017-11-10" duration="1" complete="0" expand="true"/>
+            <task id="17" name="analisi dei requisiti" color="#00cc33" meeting="false" start="2017-11-17" duration="1" complete="0" expand="true"/>
+            <task id="18" name="analisi costi e benefici" color="#00cc33" meeting="false" start="2017-11-24" duration="1" complete="0" expand="true"/>
+            <task id="19" name="documento di specifica" color="#00cc33" meeting="false" start="2017-11-24" duration="1" complete="0" expand="true"/>
+            <task id="20" name="documento specifica completato" color="#00cc33" meeting="true" start="2017-11-24" duration="0" complete="0" expand="true"/>
         </task>
         <task id="4" name="Progettazione" meeting="false" start="2017-11-10" duration="5" complete="0" expand="true">
-            <task id="10" name="schemi modalità" meeting="false" start="2017-11-10" duration="1" complete="0" expand="true"/>
-            <task id="22" name="datasheet bottone led" meeting="false" start="2017-11-17" duration="1" complete="0" expand="true"/>
-            <task id="23" name="schema E-R del database" meeting="false" start="2017-12-01" duration="1" complete="0" expand="true"/>
-            <task id="25" name="diagramma delle classi" meeting="false" start="2017-11-24" duration="1" complete="0" expand="true"/>
-            <task id="26" name="architettura del sistema" meeting="false" start="2017-12-08" duration="1" complete="0" expand="true"/>
-            <task id="45" name="ricerca materiale fisico" meeting="false" start="2017-11-17" duration="3" complete="0" expand="true"/>
+            <task id="10" name="schemi modalità" color="#ff0000" meeting="false" start="2017-11-10" duration="1" complete="0" expand="true"/>
+            <task id="22" name="datasheet bottone led" color="#ff0000" meeting="false" start="2017-11-17" duration="1" complete="0" expand="true"/>
+            <task id="23" name="schema E-R del database" color="#ff0000" meeting="false" start="2017-12-01" duration="1" complete="0" expand="true"/>
+            <task id="25" name="diagramma delle classi" color="#ff0000" meeting="false" start="2017-11-24" duration="1" complete="0" expand="true"/>
+            <task id="26" name="architettura del sistema" color="#ff0000" meeting="false" start="2017-12-08" duration="1" complete="0" expand="true"/>
+            <task id="45" name="ricerca materiale fisico" color="#ff0000" meeting="false" start="2017-11-17" duration="3" complete="0" expand="true"/>
         </task>
         <task id="5" name="Implementazione" meeting="false" start="2017-11-24" duration="8" complete="0" expand="true">
             <task id="57" name="Cablaggio" meeting="false" start="2017-11-24" duration="5" complete="0" expand="true">
-                <task id="59" name="creazione zona test" meeting="false" start="2017-11-24" duration="2" complete="0" expand="true"/>
-                <task id="60" name="creazione zona definitiva" meeting="false" start="2017-12-08" duration="3" complete="0" expand="true"/>
+                <task id="59" name="creazione zona test" color="#0066ff" meeting="false" start="2017-11-24" duration="2" complete="0" expand="true"/>
+                <task id="60" name="creazione zona definitiva" color="#0066ff" meeting="false" start="2017-12-08" duration="3" complete="0" expand="true"/>
             </task>
             <task id="52" name="Sviluppo modalità" meeting="false" start="2017-12-01" duration="3" complete="0" expand="true">
-                <task id="11" name="modalità 1" meeting="false" start="2017-12-01" duration="1" complete="0" expand="true"/>
-                <task id="27" name="modalità 2" meeting="false" start="2017-12-01" duration="1" complete="0" expand="true"/>
-                <task id="28" name="modalità 3" meeting="false" start="2017-12-01" duration="1" complete="0" expand="true"/>
-                <task id="29" name="modalità 4" meeting="false" start="2017-12-01" duration="1" complete="0" expand="true"/>
-                <task id="30" name="modalità 5" meeting="false" start="2017-12-01" duration="1" complete="0" expand="true"/>
-                <task id="31" name="modalità 6" meeting="false" start="2017-12-01" duration="1" complete="0" expand="true"/>
-                <task id="32" name="modalità 7" meeting="false" start="2017-12-01" duration="1" complete="0" expand="true"/>
-                <task id="33" name="modalità 8" meeting="false" start="2017-12-01" duration="1" complete="0" expand="true"/>
-                <task id="34" name="modalità 9" meeting="false" start="2017-12-01" duration="1" complete="0" expand="true"/>
-                <task id="35" name="modalità 10" meeting="false" start="2017-12-01" duration="1" complete="0" expand="true"/>
-                <task id="36" name="modalità 11" meeting="false" start="2017-12-01" duration="1" complete="0" expand="true"/>
-                <task id="37" name="modalità 12" meeting="false" start="2017-12-15" duration="1" complete="0" expand="true"/>
-                <task id="38" name="modalità 13" meeting="false" start="2017-12-15" duration="1" complete="0" expand="true"/>
-                <task id="39" name="modalità 14" meeting="false" start="2017-12-15" duration="1" complete="0" expand="true"/>
-                <task id="40" name="modalità 15" meeting="false" start="2017-12-15" duration="1" complete="0" expand="true"/>
-                <task id="41" name="modalità 16" meeting="false" start="2017-12-15" duration="1" complete="0" expand="true"/>
-                <task id="42" name="modalità 17" meeting="false" start="2017-12-15" duration="1" complete="0" expand="true"/>
-                <task id="43" name="modalità 18" meeting="false" start="2017-12-15" duration="1" complete="0" expand="true"/>
-                <task id="44" name="modalità 19" meeting="false" start="2017-12-15" duration="1" complete="0" expand="true"/>
-                <task id="46" name="modalità 20" meeting="false" start="2017-12-15" duration="1" complete="0" expand="true"/>
-                <task id="47" name="modalità 21" meeting="false" start="2017-12-15" duration="1" complete="0" expand="true"/>
-                <task id="48" name="modalità 22" meeting="false" start="2017-12-15" duration="1" complete="0" expand="true"/>
-                <task id="49" name="modalità 23" meeting="false" start="2017-12-15" duration="1" complete="0" expand="true"/>
+                <task id="11" name="modalità 1" color="#0066ff" meeting="false" start="2017-12-01" duration="1" complete="0" expand="true"/>
+                <task id="27" name="modalità 2" color="#0066ff" meeting="false" start="2017-12-01" duration="1" complete="0" expand="true"/>
+                <task id="28" name="modalità 3" color="#0066ff" meeting="false" start="2017-12-01" duration="1" complete="0" expand="true"/>
+                <task id="29" name="modalità 4" color="#0066ff" meeting="false" start="2017-12-01" duration="1" complete="0" expand="true"/>
+                <task id="30" name="modalità 5" color="#0066ff" meeting="false" start="2017-12-01" duration="1" complete="0" expand="true"/>
+                <task id="31" name="modalità 6" color="#0066ff" meeting="false" start="2017-12-01" duration="1" complete="0" expand="true"/>
+                <task id="32" name="modalità 7" color="#0066ff" meeting="false" start="2017-12-01" duration="1" complete="0" expand="true"/>
+                <task id="33" name="modalità 8" color="#0066ff" meeting="false" start="2017-12-01" duration="1" complete="0" expand="true"/>
+                <task id="34" name="modalità 9" color="#0066ff" meeting="false" start="2017-12-01" duration="1" complete="0" expand="true"/>
+                <task id="35" name="modalità 10" color="#0066ff" meeting="false" start="2017-12-01" duration="1" complete="0" expand="true"/>
+                <task id="36" name="modalità 11" color="#0066ff" meeting="false" start="2017-12-01" duration="1" complete="0" expand="true"/>
+                <task id="37" name="modalità 12" color="#0066ff" meeting="false" start="2017-12-15" duration="1" complete="0" expand="true"/>
+                <task id="38" name="modalità 13" color="#0066ff" meeting="false" start="2017-12-15" duration="1" complete="0" expand="true"/>
+                <task id="39" name="modalità 14" color="#0066ff" meeting="false" start="2017-12-15" duration="1" complete="0" expand="true"/>
+                <task id="40" name="modalità 15" color="#0066ff" meeting="false" start="2017-12-15" duration="1" complete="0" expand="true"/>
+                <task id="41" name="modalità 16" color="#0066ff" meeting="false" start="2017-12-15" duration="1" complete="0" expand="true"/>
+                <task id="42" name="modalità 17" color="#0066ff" meeting="false" start="2017-12-15" duration="1" complete="0" expand="true"/>
+                <task id="43" name="modalità 18" color="#0066ff" meeting="false" start="2017-12-15" duration="1" complete="0" expand="true"/>
+                <task id="44" name="modalità 19" color="#0066ff" meeting="false" start="2017-12-15" duration="1" complete="0" expand="true"/>
+                <task id="46" name="modalità 20" color="#0066ff" meeting="false" start="2017-12-15" duration="1" complete="0" expand="true"/>
+                <task id="47" name="modalità 21" color="#0066ff" meeting="false" start="2017-12-15" duration="1" complete="0" expand="true"/>
+                <task id="48" name="modalità 22" color="#0066ff" meeting="false" start="2017-12-15" duration="1" complete="0" expand="true"/>
+                <task id="49" name="modalità 23" color="#0066ff" meeting="false" start="2017-12-15" duration="1" complete="0" expand="true"/>
             </task>
-            <task id="61" name="creazione database" meeting="false" start="2017-12-22" duration="4" complete="0" expand="true"/>
+            <task id="61" name="creazione database" color="#0066ff" meeting="false" start="2017-12-22" duration="4" complete="0" expand="true"/>
         </task>
         <task id="6" name="Integrazione" meeting="false" start="2017-12-22" duration="4" complete="0" expand="true">
-            <task id="13" name="collegamento fisico logico" meeting="false" start="2017-12-22" duration="1" complete="0" expand="true"/>
-            <task id="111" name="collegamento logico database" meeting="false" start="2018-01-12" duration="1" complete="0" expand="true"/>
-            <task id="114" name="collegamenti completati" color="#0099cc" meeting="true" start="2018-01-12" duration="0" complete="0" expand="true"/>
+            <task id="13" name="collegamento fisico logico" color="#ff9900" meeting="false" start="2017-12-22" duration="1" complete="0" expand="true"/>
+            <task id="111" name="collegamento logico database" color="#ff9900" meeting="false" start="2018-01-12" duration="1" complete="0" expand="true"/>
+            <task id="114" name="collegamenti completati" color="#ff9900" meeting="true" start="2018-01-12" duration="0" complete="0" expand="true"/>
         </task>
-        <task id="7" name="Test" meeting="false" start="2017-12-15" duration="12" complete="0" expand="true">
-            <task id="63" name="Test modalità" meeting="false" start="2017-12-22" duration="11" complete="0" expand="true">
-                <task id="65" name="test modalità 1" meeting="false" start="2017-12-22" duration="1" complete="0" expand="true"/>
-                <task id="67" name="test modalità 2" meeting="false" start="2017-12-22" duration="1" complete="0" expand="true"/>
-                <task id="69" name="test modalità 3" meeting="false" start="2017-12-22" duration="1" complete="0" expand="true"/>
-                <task id="110" name="test modalità 4" meeting="false" start="2017-12-22" duration="1" complete="0" expand="true"/>
-                <task id="73" name="test modalità 5" meeting="false" start="2017-12-22" duration="1" complete="0" expand="true"/>
-                <task id="75" name="test modalità 6" meeting="false" start="2017-12-22" duration="1" complete="0" expand="true"/>
-                <task id="77" name="test modalità 7" meeting="false" start="2017-12-22" duration="1" complete="0" expand="true"/>
-                <task id="79" name="test modalità 8" meeting="false" start="2017-12-22" duration="1" complete="0" expand="true"/>
-                <task id="81" name="test modalità 9" meeting="false" start="2017-12-22" duration="1" complete="0" expand="true"/>
-                <task id="83" name="test modalità 10" meeting="false" start="2017-12-22" duration="1" complete="0" expand="true"/>
-                <task id="85" name="test modalità 11" meeting="false" start="2017-12-22" duration="1" complete="0" expand="true"/>
-                <task id="87" name="test modalità 12" meeting="false" start="2017-12-22" duration="1" complete="0" expand="true"/>
-                <task id="89" name="test modalità 13" meeting="false" start="2017-12-22" duration="1" complete="0" expand="true"/>
-                <task id="91" name="test modalità 14" meeting="false" start="2017-12-22" duration="1" complete="0" expand="true"/>
-                <task id="93" name="test modalità 15" meeting="false" start="2017-12-22" duration="1" complete="0" expand="true"/>
-                <task id="95" name="test modalità 16" meeting="false" start="2017-12-22" duration="1" complete="0" expand="true"/>
-                <task id="97" name="test modalità 17" meeting="false" start="2017-12-22" duration="1" complete="0" expand="true"/>
-                <task id="99" name="test modalità 18" meeting="false" start="2017-12-22" duration="1" complete="0" expand="true"/>
-                <task id="101" name="test modalità 19" meeting="false" start="2017-12-22" duration="1" complete="0" expand="true"/>
-                <task id="103" name="test modalità 20" meeting="false" start="2017-12-22" duration="1" complete="0" expand="true"/>
-                <task id="105" name="test modalità 21" meeting="false" start="2017-12-22" duration="1" complete="0" expand="true"/>
-                <task id="107" name="test modalità 22" meeting="false" start="2017-12-22" duration="1" complete="0" expand="true"/>
-                <task id="8" name="test modalità 23" meeting="false" start="2017-12-22" duration="11" complete="0" expand="true"/>
+        <task id="7" name="Test" meeting="false" start="2017-12-15" duration="6" complete="0" expand="true">
+            <task id="63" name="Test modalità" meeting="false" start="2017-12-22" duration="1" complete="0" expand="true">
+                <task id="65" name="test modalità 1" color="#33ffcc" meeting="false" start="2017-12-22" duration="1" complete="0" expand="true"/>
+                <task id="67" name="test modalità 2" color="#33ffcc" meeting="false" start="2017-12-22" duration="1" complete="0" expand="true"/>
+                <task id="69" name="test modalità 3" color="#33ffcc" meeting="false" start="2017-12-22" duration="1" complete="0" expand="true"/>
+                <task id="110" name="test modalità 4" color="#33ffcc" meeting="false" start="2017-12-22" duration="1" complete="0" expand="true"/>
+                <task id="73" name="test modalità 5" color="#33ffcc" meeting="false" start="2017-12-22" duration="1" complete="0" expand="true"/>
+                <task id="75" name="test modalità 6" color="#33ffcc" meeting="false" start="2017-12-22" duration="1" complete="0" expand="true"/>
+                <task id="77" name="test modalità 7" color="#33ffcc" meeting="false" start="2017-12-22" duration="1" complete="0" expand="true"/>
+                <task id="79" name="test modalità 8" color="#33ffcc" meeting="false" start="2017-12-22" duration="1" complete="0" expand="true"/>
+                <task id="81" name="test modalità 9" color="#33ffcc" meeting="false" start="2017-12-22" duration="1" complete="0" expand="true"/>
+                <task id="83" name="test modalità 10" color="#33ffcc" meeting="false" start="2017-12-22" duration="1" complete="0" expand="true"/>
+                <task id="85" name="test modalità 11" color="#33ffcc" meeting="false" start="2017-12-22" duration="1" complete="0" expand="true"/>
+                <task id="87" name="test modalità 12" color="#33ffcc" meeting="false" start="2017-12-22" duration="1" complete="0" expand="true"/>
+                <task id="89" name="test modalità 13" color="#33ffcc" meeting="false" start="2017-12-22" duration="1" complete="0" expand="true"/>
+                <task id="91" name="test modalità 14" color="#33ffcc" meeting="false" start="2017-12-22" duration="1" complete="0" expand="true"/>
+                <task id="93" name="test modalità 15" color="#33ffcc" meeting="false" start="2017-12-22" duration="1" complete="0" expand="true"/>
+                <task id="95" name="test modalità 16" color="#33ffcc" meeting="false" start="2017-12-22" duration="1" complete="0" expand="true"/>
+                <task id="97" name="test modalità 17" color="#33ffcc" meeting="false" start="2017-12-22" duration="1" complete="0" expand="true"/>
+                <task id="99" name="test modalità 18" color="#33ffcc" meeting="false" start="2017-12-22" duration="1" complete="0" expand="true"/>
+                <task id="101" name="test modalità 19" color="#33ffcc" meeting="false" start="2017-12-22" duration="1" complete="0" expand="true"/>
+                <task id="103" name="test modalità 20" color="#33ffcc" meeting="false" start="2017-12-22" duration="1" complete="0" expand="true"/>
+                <task id="105" name="test modalità 21" color="#33ffcc" meeting="false" start="2017-12-22" duration="1" complete="0" expand="true"/>
+                <task id="107" name="test modalità 22" color="#33ffcc" meeting="false" start="2017-12-22" duration="1" complete="0" expand="true"/>
+                <task id="8" name="test modalità 23" color="#33ffcc" meeting="false" start="2017-12-22" duration="1" complete="0" expand="true"/>
             </task>
-            <task id="119" name="test collegamento fisico logico" meeting="false" start="2017-12-22" duration="1" complete="0" expand="true"/>
-            <task id="120" name="test collegamento logico database" meeting="false" start="2018-01-12" duration="1" complete="0" expand="true"/>
-            <task id="121" name="test giocabilità" meeting="false" start="2017-12-15" duration="5" complete="0" expand="true"/>
-            <task id="122" name="beta tester" meeting="false" start="2018-01-12" duration="2" complete="0" expand="true"/>
+            <task id="119" name="test collegamento fisico logico" color="#33ffcc" meeting="false" start="2017-12-22" duration="1" complete="0" expand="true"/>
+            <task id="120" name="test collegamento logico database" color="#33ffcc" meeting="false" start="2018-01-12" duration="1" complete="0" expand="true"/>
+            <task id="121" name="test giocabilità" color="#33ffcc" meeting="false" start="2017-12-15" duration="5" complete="0" expand="true"/>
+            <task id="122" name="beta tester" color="#33ffcc" meeting="false" start="2018-01-12" duration="2" complete="0" expand="true"/>
         </task>
-        <task id="123" name="Documentazione" meeting="false" start="2017-11-10" duration="11" complete="0" expand="true"/>
+        <task id="123" name="Documentazione" color="#ff00ff" meeting="false" start="2017-11-10" duration="11" complete="0" expand="true"/>
+        <task id="197" name="Consegna progetto" color="#000000" meeting="true" start="2018-01-19" duration="0" complete="0" expand="true"/>
     </tasks>
     <resources/>
     <allocations/>
