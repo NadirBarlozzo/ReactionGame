@@ -1,18 +1,10 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-<?xml version="1.0" encoding="UTF-8"?><project name="Untitled Gantt Project" company="" webLink="http://" view-date="2017-11-08" view-index="0" gantt-divider-location="457" resource-divider-location="300" version="2.8.5" locale="it">
-=======
 <?xml version="1.0" encoding="UTF-8"?><project name="Untitled Gantt Project" company="" webLink="http://" view-date="2017-09-25" view-index="0" gantt-divider-location="457" resource-divider-location="300" version="2.8.5" locale="it">
->>>>>>> 39bf697629fa44016e0b939644caa38f0544a2bb
-=======
-<?xml version="1.0" encoding="UTF-8"?><project name="Untitled Gantt Project" company="" webLink="http://" view-date="2017-09-25" view-index="0" gantt-divider-location="457" resource-divider-location="300" version="2.8.5" locale="it">
->>>>>>> 66b5c71760e8338cff185c05947bc3d1035c29cf
     <description/>
     <view zooming-state="default:2" id="gantt-chart">
         <field id="tpd3" name="Nome" width="273" order="0"/>
         <field id="tpd4" name="Data d'inizio" width="61" order="1"/>
         <field id="tpd5" name="Data di fine" width="104" order="2"/>
-        <option id="color.recent"><![CDATA[#33ffcc #ff00ff #f4f4f4 #00cc33 #ff9900 #0066ff #ff0000 #000000]]></option>
+        <option id="color.recent"><![CDATA[#ff00ff #33ffcc #f4f4f4 #00cc33 #ff9900 #0066ff #ff0000 #000000]]></option>
     </view>
     <view id="resource-table">
         <field id="0" name="Nome" width="210" order="0"/>
@@ -121,7 +113,6 @@
                 <task id="107" name="test modalità 22" color="#33ffcc" meeting="false" start="2017-12-22" duration="1" complete="0" expand="true"/>
                 <task id="8" name="test modalità 23" color="#33ffcc" meeting="false" start="2017-12-22" duration="1" complete="0" expand="true"/>
             </task>
-            <task id="199" name="test funzionamento hardware" color="#33ffcc" meeting="false" start="2017-12-22" duration="1" complete="0" expand="true"/>
             <task id="119" name="test collegamento fisico logico" color="#33ffcc" meeting="false" start="2017-12-22" duration="1" complete="0" expand="true"/>
             <task id="120" name="test collegamento logico database" color="#33ffcc" meeting="false" start="2018-01-12" duration="1" complete="0" expand="true"/>
             <task id="121" name="test giocabilità" color="#33ffcc" meeting="false" start="2017-12-15" duration="5" complete="0" expand="true"/>
