@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?><project name="Untitled Gantt Project" company="" webLink="http://" view-date="2017-11-03" view-index="0" gantt-divider-location="457" resource-divider-location="300" version="2.8.5" locale="it">
+<?xml version="1.0" encoding="UTF-8"?><project name="Untitled Gantt Project" company="" webLink="http://" view-date="2017-09-25" view-index="0" gantt-divider-location="457" resource-divider-location="300" version="2.8.5" locale="it">
     <description/>
-    <view zooming-state="default:0" id="gantt-chart">
+    <view zooming-state="default:2" id="gantt-chart">
         <field id="tpd3" name="Nome" width="273" order="0"/>
         <field id="tpd4" name="Data d'inizio" width="61" order="1"/>
         <field id="tpd5" name="Data di fine" width="104" order="2"/>
