@@ -113,6 +113,7 @@
                 <task id="107" name="test modalità 22" color="#33ffcc" meeting="false" start="2017-12-22" duration="1" complete="0" expand="true"/>
                 <task id="8" name="test modalità 23" color="#33ffcc" meeting="false" start="2017-12-22" duration="1" complete="0" expand="true"/>
             </task>
+            <task id="200" name="test funzionamento hardware" color="#33ffcc" meeting="false" start="2017-12-22" duration="1" complete="0" expand="true"/>
             <task id="119" name="test collegamento fisico logico" color="#33ffcc" meeting="false" start="2017-12-22" duration="1" complete="0" expand="true"/>
             <task id="120" name="test collegamento logico database" color="#33ffcc" meeting="false" start="2018-01-12" duration="1" complete="0" expand="true"/>
             <task id="121" name="test giocabilità" color="#33ffcc" meeting="false" start="2017-12-15" duration="5" complete="0" expand="true"/>
