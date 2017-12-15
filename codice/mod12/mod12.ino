@@ -31,14 +31,14 @@ void setup()
 void loop()
 {
   Start();
-  while(pressed == false && error == false){
+  while((pressed == false && error == false) && Time() <= timeReflection){
     for(int i = 0; i < sizeof(buttonPins);i++){
       currentButtonsState[i] = debounce(i);
       if(lastButtonsState[i] == LOW && currentButtonsState[i] == HIGH && i == currentNumber)
       {
         pressed = true;
       }
-      if(Time() <= timeReflection || (lastButtonsState[i] == LOW &&  currentButtonsState[i] == HIGH && i != currentNumber)){
+      if(lastButtonsState[i] == LOW &&  currentButtonsState[i] == HIGH && i != currentNumber){
         error = true;
       }
       lastButtonsState[i] = currentButtonsState[i];
@@ -77,6 +77,7 @@ void Start(){
     {
       digitalWrite(ledPins[i], LOW);
     }
+    delay(1000);
     digitalWrite(ledPins[currentNumber], HIGH);
   startTime = millis();
 
