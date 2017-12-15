@@ -1,11 +1,46 @@
+/**
+ * Array contenente il vecchio stato dei bottoni. 
+ */
 boolean lastButtonsState[12];
+
+/**
+ * Array contenente lo stato attuale dei bottoni.
+ */
 boolean currentButtonsState[12];
+
+/**
+ * Booleano che verifica se si è presenti nel primo ciclo.
+ */
 boolean firstCicle = true;
+
+/**
+ * Array contenente i pins dei bottoni.
+ */
 int buttonPins[] = {1,2,3,4,5,6,7,8,9,10,11,12};
+
+/**
+ * Array contenente i pins dei led
+ */
 int ledPins[] = {13,14,15,16,17,18,19,20,21,22,23,24};
+
+/**
+ * Il numero di millisecondi mancanti alla fine del gioco.
+ */
 int countdown = 60000;
+
+/**
+ * Valore relativo al vecchio indice del led da accendere.
+ */
 int lastNumber = -1;
+
+/**
+ * Valore relativo all'indice attuale del led da accendere.
+ */
 int currentNumber = -1;
+
+/**
+ * Punteggio della partita
+ */
 int score = 0;
 
 void setup() 
