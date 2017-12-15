@@ -11,6 +11,7 @@ int score = 0;
 int currentNumber = -1;
 int lastNumber = -1;
 int shot = 100;
+boolean error;
 
 void setup()
 {
@@ -30,22 +31,27 @@ void setup()
 void loop()
 {
   Start();
-  while(pressed == false && Time() <= timeReflection){
+  while(pressed == false && error == false){
     for(int i = 0; i < sizeof(buttonPins);i++){
       currentButtonsState[i] = debounce(i);
       if(lastButtonsState[i] == LOW && currentButtonsState[i] == HIGH && i == currentNumber)
       {
         pressed = true;
       }
+      if(Time() <= timeReflection || (lastButtonsState[i] == LOW &&  currentButtonsState[i] == HIGH && i != currentNumber)){
+        error = true;
+      }
       lastButtonsState[i] = currentButtonsState[i];
     }
   }
   if(pressed == true){
     score++;  
-  }else{
+  }
+  if(error == true){
     timeReflection -= 0.05;  
   }
   pressed = false;
+  error = false;
   shot--;
   if(shot <= 0){
     exit(0);
