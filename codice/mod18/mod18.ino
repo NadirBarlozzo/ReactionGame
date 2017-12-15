@@ -34,6 +34,7 @@ void loop()
   
   for(int i = 0; i < sizeof(buttonPins); i++)
   {
+    Serial.println("A");
     currentButtonsState[i] = debounce(i); 
     //digitalRead(buttonPins[currentNumber]);
 
@@ -83,5 +84,6 @@ void lightLed()
   {
     digitalWrite(ledPins[i], LOW);
   }
+  delay(1000);
   digitalWrite(ledPins[currentNumber], HIGH);
 }

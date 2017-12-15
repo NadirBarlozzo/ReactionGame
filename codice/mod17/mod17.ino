@@ -83,5 +83,6 @@ void lightLed()
   {
     digitalWrite(ledPins[i], LOW);
   }
+  delay(1000);
   digitalWrite(ledPins[currentNumber], HIGH);
 }
