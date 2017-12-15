@@ -15,7 +15,7 @@ boolean error;
 
 void setup()
 {
-  for(int i = 0; i < sizeof(buttonPins); i++)
+  for(int i = 0; i < sizeof(buttonPins) / sizeof(buttonPins[0]); i++)
   {
     //Assegno i pin ai relativi bottoni e led.
     pinMode(buttonPins[i], INPUT);
@@ -32,7 +32,7 @@ void loop()
 {
   Start();
   while((pressed == false && error == false) && Time() <= timeReflection){
-    for(int i = 0; i < sizeof(buttonPins);i++){
+    for(int i = 0; i < sizeof(buttonPins) / sizeof(buttonPins[0]);i++){
       currentButtonsState[i] = debounce(i);
       if(lastButtonsState[i] == LOW && currentButtonsState[i] == HIGH && i == currentNumber)
       {
@@ -73,7 +73,7 @@ void Start(){
     }
   }
   lastNumber = currentNumber;
-    for(int i = 0; i < sizeof(ledPins); i++)
+    for(int i = 0; i < sizeof(ledPins) / sizeof(ledPins[0]); i++)
     {
       digitalWrite(ledPins[i], LOW);
     }
