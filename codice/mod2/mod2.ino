@@ -1,10 +1,12 @@
 boolean lastButtonsState[12];
 boolean currentButtonsState[12];
+boolean firstCicle = true;
 int buttonPins[] = {1,2,3,4,5,6,7,8,9,10,11,12};
 int ledPins[] = {13,14,15,16,17,18,19,20,21,22,23,24};
-int countdown = 60000;
+int countdown = 300000;
 int lastNumber = -1;
-int n;
+int currentNumber = -1;
+int score = 0;
 
 void setup() 
 {
@@ -23,13 +25,24 @@ void setup()
 }
 
 void loop() 
-{
+{ 
+  if(firstCicle)
+  {
+    lightLed();
+    firstCicle = false;  
+  }
+  
   for(int i = 0; i < sizeof(buttonPins); i++)
   {
     currentButtonsState[i] = debounce(i); 
-    lightLed();
-    digitalRead(buttonPins[n]);
-  
+    //digitalRead(buttonPins[currentNumber]);
+
+    if(currentButtonsState[i] == true && currentButtonsState[i] != lastButtonsState[i] && i == currentNumber)
+    {
+      score++;
+      lightLed();
+    }
+    
     lastButtonsState[i] = currentButtonsState[i];
     countdown--;
     delay(1);
@@ -54,22 +67,21 @@ boolean debounce(int n)
 
 void lightLed()
 {
-  boolean a = false;
+  boolean a = true;
   while(a)
   {
-    n = random(0,9); 
+    currentNumber = random(0,9); 
     
-    if(n != lastNumber)
+    if(currentNumber != lastNumber)
     {
-      a = true;
+      a = false;
     }
   }
-  lastNumber = n;
+  lastNumber = currentNumber;
 
   for(int i = 0; i < sizeof(ledPins); i++)
   {
     digitalWrite(ledPins[i], LOW);
   }
-  digitalWrite(ledPins[n], HIGH);
+  digitalWrite(ledPins[currentNumber], HIGH);
 }
-
