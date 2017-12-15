@@ -15,7 +15,7 @@ boolean error;
 
 void setup()
 {
-  for(int i = 0; i < sizeof(buttonPins); i++)
+  for(int i = 0; i < sizeof(buttonPins) / sizeof(buttonPins[0]); i++)
   {
     //Assegno i pin ai relativi bottoni e led.
     pinMode(buttonPins[i], INPUT);
@@ -31,14 +31,14 @@ void setup()
 void loop()
 {
   Start();
-  while(pressed == false && error == false){
-    for(int i = 0; i < sizeof(buttonPins);i++){
+  while((pressed == false && error == false) && Time() <= timeReflection){
+    for(int i = 0; i < (sizeof(buttonPins) / sizeof(buttonPins[0]));i++){
       currentButtonsState[i] = debounce(i);
       if(lastButtonsState[i] == LOW && currentButtonsState[i] == HIGH && i == currentNumber)
       {
         pressed = true;
       }
-      if(Time() <= timeReflection || (lastButtonsState[i] == LOW &&  currentButtonsState[i] == HIGH && i != currentNumber)){
+      if(lastButtonsState[i] == LOW &&  currentButtonsState[i] == HIGH && i != currentNumber){
         error = true;
       }
       lastButtonsState[i] = currentButtonsState[i];
@@ -73,10 +73,11 @@ void Start(){
     }
   }
   lastNumber = currentNumber;
-    for(int i = 0; i < sizeof(ledPins); i++)
+    for(int i = 0; i < (sizeof(ledPins) / sizeof(ledPins[0])); i++)
     {
       digitalWrite(ledPins[i], LOW);
     }
+    delay(1000);
     digitalWrite(ledPins[currentNumber], HIGH);
   startTime = millis();
 
