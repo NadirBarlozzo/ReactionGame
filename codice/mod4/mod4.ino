@@ -10,6 +10,7 @@ float timeReflection = 1;
 int score = 0;
 int currentNumber = -1;
 int lastNumber = -1;
+int shot = 100;
 
 void setup()
 {
@@ -29,7 +30,7 @@ void setup()
 void loop()
 {
   Start();
-  while(pressed != true || Time() <= timeReflection){
+  while(pressed == false && Time() <= timeReflection){
     for(int i = 0; i < sizeof(buttonPins);i++){
       currentButtonsState[i] = debounce(i);
       if(lastButtonsState[i] == LOW && currentButtonsState[i] == HIGH && i == currentNumber)
@@ -45,6 +46,10 @@ void loop()
     timeReflection -= 0.05;  
   }
   pressed = false;
+  shot--;
+  if(shot <= 0){
+    exit(0);
+  }
 }
 
   
@@ -73,7 +78,7 @@ void Start(){
 
 float Time(){
    endTime = millis();
-   elapsedTime = (endTime - startTime)+5;
+   elapsedTime = (endTime - startTime);
    elapsedTime = elapsedTime/1000;
    return elapsedTime;
 }
