@@ -1,8 +1,8 @@
-boolean lastButtonsState[12];
-boolean currentButtonsState[12];
+boolean lastButtonsState[10];
+boolean currentButtonsState[10];
 boolean firstCicle = true;
-int buttonPins[] = {1,2,3,4,5,6,7,8,9,10,11,12};
-int ledPins[] = {13,14,15,16,17,18,19,20,21,22,23,24};
+int buttonPins[] = {1,2,3,4,5,6,7,8,9,10};
+int ledPins[] = {11,12,13,14,15,16,17,18,19,20};
 int countdown = 300000;
 int lastNumber = -1;
 int currentNumber = -1;

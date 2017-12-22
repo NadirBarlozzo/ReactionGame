@@ -1,12 +1,12 @@
 /**
  * Array contenente il vecchio stato dei bottoni. 
  */
-boolean lastButtonsState[10];
+boolean lastButtonsState[4];
 
 /**
  * Array contenente lo stato attuale dei bottoni.
  */
-boolean currentButtonsState[10];
+boolean currentButtonsState[4];
 
 /**
  * Booleano che verifica se si è presenti nel primo ciclo.
@@ -16,12 +16,12 @@ boolean firstCicle = true;
 /**
  * Array contenente i pins dei bottoni.
  */
-int buttonPins[] = {1,2,3,4,5,6,7,8,9,10};
+int buttonPins[] = {1,2,3,4};
 
 /**
  * Array contenente i pins dei led
  */
-int ledPins[] = {11,12,13,14,15,16,17,18,19,20};
+int ledPins[] = {5,6,7,8};
 
 /**
  * Il numero di millisecondi mancanti alla fine del gioco.
