@@ -1,5 +1,5 @@
 int buttonPins[] = {1,2,3,4,5,6,7,8,9,10,11};
-int ledPins[] = {12,13,14,15,16,17,18,19,20,21};
+int ledPins[] = {12,13,14,15,16,17,18,19,20,21,22};
 boolean lastButtonsState[11];
 boolean currentButtonsState[11];
 boolean pressed = false;
@@ -11,11 +11,10 @@ int score = 0;
 int currentNumber = -1;
 int lastNumber = -1;
 int shot = 50;
-boolean error;
 
 void setup()
 {
-  for(int i = 0; i < sizeof(buttonPins); i++)
+  for(int i = 0; i < sizeof(buttonPins) / sizeof(buttonPins[0]); i++)
   {
     //Assegno i pin ai relativi bottoni e led.
     pinMode(buttonPins[i], INPUT);
@@ -47,9 +46,6 @@ void loop()
   }
   if(pressed == true && elapsedTime < timeReflection){
     score++;  
-  }
-  if(error == true || elapsedTime >= timeReflection){
-    timeReflection -= 0.05;  
   }
   pressed = false;
   error = false;
