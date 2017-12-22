@@ -45,7 +45,7 @@ int score = 0;
 
 void setup() 
 {
-  for(int i = 0; i < sizeof(buttonPins); i++)
+  for(int i = 0; i < sizeof(buttonPins)/sizeof(buttonPins[0]); i++)
   {
     //Assegno i pin ai relativi bottoni e led.
     pinMode(buttonPins[i], INPUT);
@@ -67,7 +67,7 @@ void loop()
     firstCicle = false;  
   }
   
-  for(int i = 0; i < sizeof(buttonPins); i++)
+  for(int i = 0; i < sizeof(buttonPins) / sizeof(buttonPins[0]); i++)
   {
     currentButtonsState[i] = debounce(i); 
     //digitalRead(buttonPins[currentNumber]);
@@ -114,7 +114,7 @@ void lightLed()
   }
   lastNumber = currentNumber;
 
-  for(int i = 0; i < sizeof(ledPins); i++)
+  for(int i = 0; i < sizeof(ledPins) / sizeof(ledPins[0]); i++)
   {
     digitalWrite(ledPins[i], LOW);
   }
