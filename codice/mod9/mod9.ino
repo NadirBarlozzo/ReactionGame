@@ -11,6 +11,8 @@ int score = 0;
 int currentNumber = -1;
 int lastNumber = -1;
 int shot = 50;
+int buzzerPin = 10;
+int delayValue = 10;
 
 void setup()
 {
@@ -45,7 +47,10 @@ void loop()
     }
   }
   if(pressed == true && elapsedTime < timeReflection){
-    score++;  
+    score++;
+    digitalWrite(buzzerPin, HIGH); 
+      delay(delayValue); 
+      digitalWrite(targetPin, LOW);
   }
   pressed = false;
   error = false;

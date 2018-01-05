@@ -12,6 +12,8 @@ int currentNumber = -1;
 int lastNumber = -1;
 int shot = 100;
 boolean error;
+int buzzerPin = 10;
+int delayValue = 10;
 
 void setup()
 {
@@ -31,13 +33,8 @@ void setup()
 void loop()
 {
   Start();
-<<<<<<< HEAD
-  while(pressed == false && error == false){
-    for(int i = 0; i < sizeof(buttonPins) / sizeof(buttonPins[0]); i++){
-=======
   while((pressed == false && error == false) && Time() <= timeReflection){
     for(int i = 0; i < sizeof(buttonPins);i++){
->>>>>>> 0cd5e79e7e8e91df022a24c0b69c217d1c190324
       currentButtonsState[i] = debounce(i);
       if(lastButtonsState[i] == LOW && currentButtonsState[i] == HIGH && i == currentNumber)
       {
@@ -50,6 +47,9 @@ void loop()
     }
   }
   if(pressed == true){
+    digitalWrite(buzzerPin, HIGH); 
+    delay(delayValue); 
+    digitalWrite(targetPin, LOW);
     score++;  
   }
   if(error == true){

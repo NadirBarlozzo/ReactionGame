@@ -7,6 +7,8 @@ int countdown = 0;
 int lastNumber = -1;
 int currentNumber = -1;
 int score = 0;
+int buzzerPin = 10;
+int delayValue = 10;
 
 void setup() 
 {
@@ -40,6 +42,9 @@ void loop()
     if(currentButtonsState[i] == true && currentButtonsState[i] != lastButtonsState[i] && i == currentNumber)
     {
       score++;
+      digitalWrite(buzzerPin, HIGH); 
+      delay(delayValue); 
+      digitalWrite(targetPin, LOW);
       lightLed();
     }
     
