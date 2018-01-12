@@ -12,7 +12,9 @@ int currentNumber = -1;
 int lastNumber = -1;
 int shot = 50;
 boolean error;
-
+int buzzerPin = 10;
+int delayValue = 10;
+//////////////////////////////////////////////////////////NON SO COSA STAMPARE SORRY/////////////////////////////////////////////
 void setup()
 {
   for(int i = 0; i < sizeof(buttonPins) / sizeof(buttonPins[0]); i++)
@@ -46,6 +48,9 @@ void loop()
     }
   }
   if(pressed == true && elapsedTime < timeReflection){
+    digitalWrite(buzzerPin, HIGH); 
+      delay(delayValue); 
+      digitalWrite(targetPin, LOW);
     score++;  
   }
   if(error == true || elapsedTime >= timeReflection){

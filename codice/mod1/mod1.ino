@@ -43,8 +43,57 @@ int currentNumber = -1;
  */
 int score = 0;
 
+//Pin per il sette segmenti
+//barra superiore
+int a = 9;
+//lato destro superiore
+int b = 10;
+//inferiore destra
+int c = 11;
+//inferiore
+int d = 12;
+//inferiore sinistra
+int e = 13;
+//superiore sinistra
+int f = 14;
+//centrale
+int g = 15;
+
+//Pin per il secondo sette segmenti
+//barra superiore
+int a2 = 16;
+//lato destro superiore
+int b2 = 17;
+//inferiore destra
+int c2 = 18;
+//inferiore
+int d2 = 19;
+//inferiore sinistra
+int e2 = 20;
+//superiore sinistra
+int f2 = 21;
+//centrale
+int g2 = 22;
+
 void setup() 
 {
+  //Funzionamento dei pin
+  pinMode(a, OUTPUT);
+  pinMode(b, OUTPUT);
+  pinMode(c, OUTPUT);
+  pinMode(d, OUTPUT);
+  pinMode(e, OUTPUT);
+  pinMode(f, OUTPUT);
+  pinMode(g, OUTPUT);
+  
+  pinMode(a2, OUTPUT);
+  pinMode(b2, OUTPUT);
+  pinMode(c2, OUTPUT);
+  pinMode(d2, OUTPUT);
+  pinMode(e2, OUTPUT);
+  pinMode(f2, OUTPUT);
+  pinMode(g2, OUTPUT);
+  
   for(int i = 0; i < sizeof(buttonPins)/sizeof(buttonPins[0]); i++)
   {
     //Assegno i pin ai relativi bottoni e led.
@@ -75,11 +124,17 @@ void loop()
     if(currentButtonsState[i] == true && currentButtonsState[i] != lastButtonsState[i] && i == currentNumber)
     {
       score++;
+      digitalWrite(buzzerPin, HIGH); 
+      delay(delayValue); 
+      digitalWrite(targetPin, LOW);
       lightLed();
     }
     
     lastButtonsState[i] = currentButtonsState[i];
     countdown--;
+    //Stampa dei dati
+    Cifre(countdown, a,b,c,d,e,f,g);
+    Cifre(score, a2,b2,c2,d2,e2,f2,g2);
     delay(1);
     
     if(countdown == 0)
