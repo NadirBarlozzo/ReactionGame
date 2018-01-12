@@ -14,7 +14,7 @@ int shot = 50;
 boolean error;
 int buzzerPin = 10;
 int delayValue = 10;
-
+//////////////////////////////////////////////////////////NON SO COSA STAMPARE SORRY/////////////////////////////////////////////
 void setup()
 {
   for(int i = 0; i < sizeof(buttonPins) / sizeof(buttonPins[0]); i++)
