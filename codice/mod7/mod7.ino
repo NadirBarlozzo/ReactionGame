@@ -97,7 +97,7 @@ void loop()
   if(pressed == true && elapsedTime < timeReflection){
     digitalWrite(buzzerPin, HIGH); 
       delay(delayValue); 
-      digitalWrite(targetPin, LOW);
+      digitalWrite(buzzerPin, LOW);
     score++;  
   }
   if(error == true || elapsedTime >= timeReflection){

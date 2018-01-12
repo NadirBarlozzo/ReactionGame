@@ -13,6 +13,7 @@ int lastNumber = -1;
 int shot = 25;
 boolean error;
 int buzzerPin = 10;
+int delayValue = 10;
 //Pin per il sette segmenti
 //barra superiore
 int a = 9;
@@ -97,7 +98,7 @@ void loop()
     score++;
     digitalWrite(buzzerPin, HIGH); 
       delay(delayValue); 
-      digitalWrite(targetPin, LOW);  
+      digitalWrite(buzzerPin, LOW);  
   }
   if(error == true){
     timeReflection -= 0.05;  

@@ -97,7 +97,7 @@ void loop()
     score++; 
     digitalWrite(buzzerPin, HIGH); 
       delay(delayValue); 
-      digitalWrite(targetPin, LOW);
+      digitalWrite(buzzerPin, LOW);
   }
   if(error == true){
     timeReflection -= 0.05;  

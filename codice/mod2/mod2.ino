@@ -90,7 +90,7 @@ void loop()
       score++;
       digitalWrite(buzzerPin, HIGH); 
       delay(delayValue); 
-      digitalWrite(targetPin, LOW);
+      digitalWrite(buzzerPin, LOW);
       lightLed();
     }
     

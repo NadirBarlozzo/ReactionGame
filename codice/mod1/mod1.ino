@@ -42,6 +42,8 @@ int currentNumber = -1;
  * Punteggio della partita
  */
 int score = 0;
+int buzzerPin = 10;
+int delayValue = 10;
 
 //Pin per il sette segmenti
 //barra superiore
@@ -126,7 +128,7 @@ void loop()
       score++;
       digitalWrite(buzzerPin, HIGH); 
       delay(delayValue); 
-      digitalWrite(targetPin, LOW);
+      digitalWrite(buzzerPin, LOW);
       lightLed();
     }
     
@@ -174,4 +176,88 @@ void lightLed()
     digitalWrite(ledPins[i], LOW);
   }
   digitalWrite(ledPins[currentNumber], HIGH);
+}
+//Metodo Per la stampa delle cifre
+void Cifre(float numero, int a1, int b1, int c1, int d1, int e1, int f1, int g1){
+  if(numero == 1){
+    digitalWrite(a1, LOW);
+    digitalWrite(b1, HIGH);
+    digitalWrite(c1, HIGH);
+    digitalWrite(d1, LOW);
+    digitalWrite(e1, LOW);
+    digitalWrite(f1, LOW);
+    digitalWrite(g1, LOW);
+  }
+  else if(numero == 2){
+    digitalWrite(a1, HIGH);
+    digitalWrite(b1, HIGH);
+    digitalWrite(c1, LOW);
+    digitalWrite(d1, LOW);
+    digitalWrite(e1, HIGH);
+    digitalWrite(f1, LOW);
+    digitalWrite(g1, HIGH);
+  }
+  else if(numero == 3){
+    digitalWrite(a1, HIGH);
+    digitalWrite(b1, HIGH);
+    digitalWrite(c1, HIGH);
+    digitalWrite(d1, HIGH);
+    digitalWrite(e1, LOW);
+    digitalWrite(f1, LOW);
+    digitalWrite(g1, HIGH);
+  }
+  else if(numero == 4){
+    digitalWrite(a1, LOW);
+    digitalWrite(b1, HIGH);
+    digitalWrite(c1, HIGH);
+    digitalWrite(d1, LOW);
+    digitalWrite(e1, LOW);
+    digitalWrite(f1, HIGH);
+    digitalWrite(g1, HIGH);
+  }
+  else if(numero == 5){
+    digitalWrite(a1, HIGH);
+    digitalWrite(b1, LOW);
+    digitalWrite(c1, HIGH);
+    digitalWrite(d1, HIGH);
+    digitalWrite(e1, LOW);
+    digitalWrite(f1, HIGH);
+    digitalWrite(g1, HIGH);
+  }
+  else if(numero == 6){
+    digitalWrite(a1, HIGH);
+    digitalWrite(b1, LOW);
+    digitalWrite(c1, HIGH);
+    digitalWrite(d1, HIGH);
+    digitalWrite(e1, HIGH);
+    digitalWrite(f1, HIGH);
+    digitalWrite(g1, HIGH);
+  }
+  else if(numero == 7){
+    digitalWrite(a1, HIGH);
+    digitalWrite(b1, HIGH);
+    digitalWrite(c1, HIGH);
+    digitalWrite(d1, LOW);
+    digitalWrite(e1, LOW);
+    digitalWrite(f1, LOW);
+    digitalWrite(g1, LOW);
+  }
+  else if(numero == 8){
+    digitalWrite(a1, HIGH);
+    digitalWrite(b1, HIGH);
+    digitalWrite(c1, HIGH);
+    digitalWrite(d1, HIGH);
+    digitalWrite(e1, HIGH);
+    digitalWrite(f1, HIGH);
+    digitalWrite(g1, HIGH);
+  }
+  else if(numero == 9){
+    digitalWrite(a1, HIGH);
+    digitalWrite(b1, HIGH);
+    digitalWrite(c1, HIGH);
+    digitalWrite(d1, HIGH);
+    digitalWrite(e1, LOW);
+    digitalWrite(f1, HIGH);
+    digitalWrite(g1, HIGH);
+  }
 }
