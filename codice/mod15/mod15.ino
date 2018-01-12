@@ -43,7 +43,7 @@ int currentNumber = -1;
  */
 int score = 0;
 int buzzerPin = 10;
-int delayValue = 10
+int delayValue = 10;
 
 //Pin per il sette segmenti
 //barra superiore
@@ -127,7 +127,7 @@ void loop()
       score++;
       digitalWrite(buzzerPin, HIGH); 
       delay(delayValue); 
-      digitalWrite(targetPin, LOW);
+      digitalWrite(buzzerPin, LOW);
       lightLed();
     }
     

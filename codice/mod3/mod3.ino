@@ -3,7 +3,7 @@ boolean currentButtonsState[10];
 boolean firstCicle = true;
 int buttonPins[] = {1,2,3,4,5,6,7,8,9,10};
 int ledPins[] = {13,14,15,16,17,18,19,20,21,22};
-int countdown = 0;
+int countdown = 10000;
 int lastNumber = -1;
 int currentNumber = -1;
 int score = 0;
@@ -91,18 +91,18 @@ void loop()
       score++;
       digitalWrite(buzzerPin, HIGH); 
       delay(delayValue); 
-      digitalWrite(targetPin, LOW);
+      digitalWrite(buzzerPin, LOW);
       lightLed();
     }
     
     lastButtonsState[i] = currentButtonsState[i];
-    countdown++;
+    countdown--;
     //Stampa dei dati
-    Cifre(shot, a,b,c,d,e,f,g);
+    Cifre(countdown, a,b,c,d,e,f,g);
     Cifre(score, a2,b2,c2,d2,e2,f2,g2);
     delay(1);
     
-    if(countdown == 100000 || score == 50)
+    if(countdown == 0 || score == 50)
     {
       exit(0);
     }
