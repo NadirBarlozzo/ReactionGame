@@ -1,13 +1,13 @@
 boolean lastButtonsState[10];
 boolean currentButtonsState[10];
 boolean firstCicle = true;
-int buttonPins[] = {1,2,3,4,5,6,7,8,9,10};
-int ledPins[] = {11,12,13,14,15,16,17,18,19,20};
+int buttonPins[] = {22,24,26,28,30,32,34,36,38,40};
+int ledPins[] = {23,25,27,29,31,33,35,37,39,41};
 int countdown = 300000;
 int lastNumber = -1;
 int currentNumber = -1;
 int score = 0;
-int buzzerPin = 10;
+int buzzerPin = 6;
 int delayValue = 10;
 //Pin per il sette segmenti
 //barra superiore

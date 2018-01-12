@@ -1,5 +1,5 @@
-int buttonPins[] = {1,2,3,4};
-int ledPins[] = {5,6,7,8};
+int buttonPins[] = {22, 24, 38, 40};
+int ledPins[] = {23, 25, 39, 41};
 boolean lastButtonsState[4];
 boolean currentButtonsState[4];
 boolean pressed = false;
@@ -12,7 +12,7 @@ int currentNumber = -1;
 int lastNumber = -1;
 int shot = 25;
 boolean error;
-int buzzerPin = 10;
+int buzzerPin = 6;
 int delayValue = 10;
 //Pin per il sette segmenti
 //barra superiore
