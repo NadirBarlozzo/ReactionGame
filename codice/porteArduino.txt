@@ -4,3 +4,7 @@ buzzerPin = 6;
 seriale lcd = {2,3,4,5};
 multiplexer1 = {7,8,9};
 multiplexer2 = {10,11,12};
+<<<<<<< HEAD
+scheme 1-> {0,1,2,3,5,4,6,7,9,8,#,E}
+=======
+>>>>>>> 5150dc6111f4de9fba05a4f1522aedcde517a544
