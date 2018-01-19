@@ -39,66 +39,23 @@ int lastNumber = NULL;
 int currentNumber = -1;
 
 
-int currentButton = -1;
+int timer = 0;
 /**
  * Punteggio della partita
  */
 int score = 0;
-int buzzerPin = 10;
-int delayValue = 10;
+int buzzerPin = 7;
+int buzzerPin2 = 6;
+int delayValue = 20;
 
-/*
-//Pin per il sette segmenti
-//barra superiore
-int a = 9;
-//lato destro superiore
-int b = 10;
-//inferiore destra
-int c = 11;
-//inferiore
-int d = 12;
-//inferiore sinistra
-int e = 13;
-//superiore sinistra
-int f = 14;
-//centrale
-int g = 15;
-
-//Pin per il secondo sette segmenti
-//barra superiore
-int a2 = 16;
-//lato destro superiore
-int b2 = 17;
-//inferiore destra
-int c2 = 18;
-//inferiore
-int d2 = 19;
-//inferiore sinistra
-int e2 = 20;
-//superiore sinistra
-int f2 = 21;
-//centrale
-int g2 = 22;*/
 
 void setup() 
 {
   //Funzionamento dei pin
-  /*pinMode(a, OUTPUT);
-  pinMode(b, OUTPUT);
-  pinMode(c, OUTPUT);
-  pinMode(d, OUTPUT);
-  pinMode(e, OUTPUT);
-  pinMode(f, OUTPUT);
-  pinMode(g, OUTPUT);
-  
-  pinMode(a2, OUTPUT);
-  pinMode(b2, OUTPUT);
-  pinMode(c2, OUTPUT);
-  pinMode(d2, OUTPUT);
-  pinMode(e2, OUTPUT);
-  pinMode(f2, OUTPUT);
-  pinMode(g2, OUTPUT);*/
-  
+
+    randomSeed(analogRead(0));
+    pinMode(buzzerPin, OUTPUT);
+    pinMode(buzzerPin2, OUTPUT);
   for(int i = 0; i < sizeof(buttonPins)/sizeof(buttonPins[0]); i++)
   {
     //Assegno i pin ai relativi bottoni e led.
@@ -109,17 +66,34 @@ void setup()
     lastButtonsState[i] = false;
     currentButtonsState[i] = false;
   }
-
   Serial.begin(9600);
 }
 
 void loop() 
-{     Serial.print("Countdown: ");
-    Serial.println(countdown);
-  Serial.println("Inizio ciclo");
+{     
+  //Serial.println("Inizio ciclo");
   
   if(firstCicle)
   {
+    boolean led = HIGH;
+    for(int i = 0; i < 6; i++){
+      
+      for(int j = 0; j < sizeof(ledPins) / sizeof(ledPins[0]); j++)
+      {
+      digitalWrite(ledPins[j], led);
+      }
+      delay(500);
+      led = !led;
+      if(i % 2 == 0){
+        
+      digitalWrite(buzzerPin, HIGH);
+      digitalWrite(buzzerPin2, HIGH); 
+      delay(delayValue); 
+      digitalWrite(buzzerPin, LOW);
+      digitalWrite(buzzerPin2, LOW);
+      }
+    }
+    timer = millis();
     lightLed();
     firstCicle = false;  
   }
@@ -128,17 +102,19 @@ void loop()
   {
     currentButtonsState[i] = debounce(i); 
     //digitalRead(buttonPins[currentNumber]);
-    Serial.print("bottone corrente: ");
-    Serial.println(buttonPins[i]);
+    //Serial.print("bottone corrente: ");
+    //Serial.println(buttonPins[i]);
     if(currentButtonsState[i] == true && currentButtonsState[i] != lastButtonsState[i] && i == currentNumber)
     {
-      Serial.println("premuto correttamente");
+      //Serial.println("premuto correttamente");
       score++;
       Serial.print("Score: ");
       Serial.println(score);
-      digitalWrite(buzzerPin, HIGH); 
+      digitalWrite(buzzerPin, HIGH);
+      digitalWrite(buzzerPin2, HIGH); 
       delay(delayValue); 
       digitalWrite(buzzerPin, LOW);
+      digitalWrite(buzzerPin2, LOW);
       lightLed();
     }
     
@@ -147,17 +123,16 @@ void loop()
     /*Cifre(countdown, a,b,c,d,e,f,g);
     Cifre(score, a2,b2,c2,d2,e2,f2,g2);*/
     delay(1);
-    
-    if(countdown == 0)
+    Serial.println(millis() - timer);
+    if((millis() - timer) >= countdown)
     {
-      Serial.println("end");
-      countdown = 60000;
+    for(int i = 0; i < sizeof(ledPins) / sizeof(ledPins[0]); i++)
+    {
+    digitalWrite(ledPins[i], LOW);
+    }
       exit(0);
     }
   } 
-    Serial.print("Countdown: ");
-    Serial.println(countdown);
-    countdown--;
 }
 
 boolean debounce(int n)
@@ -165,11 +140,11 @@ boolean debounce(int n)
    boolean current = (digitalRead(buttonPins[n])); 
    if(lastButtonsState[n] != current)
    {
-       delay(5);
+       delay(1);
        current = digitalRead(buttonPins[n]);
    }
-   Serial.print("stato bottone: ");
-   Serial.println(current);
+   //Serial.print("stato bottone: ");
+   //Serial.println(current);
    return current;
 }
 
@@ -178,7 +153,8 @@ void lightLed()
   boolean a = true;
   while(a)
   {
-    currentNumber = random(0,9); 
+    
+    currentNumber = random(0,10); 
     
     if(currentNumber != lastNumber)
     {
@@ -186,103 +162,19 @@ void lightLed()
     }
   }
   lastNumber = currentNumber;
-    Serial.print("currentNumber: ");
-    Serial.println(currentNumber);
+    //Serial.print("currentNumber: ");
+    //Serial.println(currentNumber);
     countdown--;
   for(int i = 0; i < sizeof(ledPins) / sizeof(ledPins[0]); i++)
   {
-    Serial.print("Spengo led ");
-    Serial.println(ledPins[i]);
+    //Serial.print("Spengo led ");
+    //Serial.println(ledPins[i]);
     digitalWrite(ledPins[i], LOW);
   }
-  Serial.print("Accendo led ");
-  Serial.println(ledPins[currentNumber]);
+  //Serial.print("Accendo led ");
+  //Serial.println(ledPins[currentNumber]);
   digitalWrite(ledPins[currentNumber], HIGH);
-  Serial.print("led da accendere:  ");
-  Serial.println(ledPins[currentNumber]);
-  currentButton = buttonPins[currentNumber];
+  /*Serial.print("led da accendere:  ");
+  Serial.println(ledPins[currentNumber]);*/
 }
-/*//Metodo Per la stampa delle cifre
-void Cifre(float numero, int a1, int b1, int c1, int d1, int e1, int f1, int g1){
-  if(numero == 1){
-    digitalWrite(a1, LOW);
-    digitalWrite(b1, HIGH);
-    digitalWrite(c1, HIGH);
-    digitalWrite(d1, LOW);
-    digitalWrite(e1, LOW);
-    digitalWrite(f1, LOW);
-    digitalWrite(g1, LOW);
-  }
-  else if(numero == 2){
-    digitalWrite(a1, HIGH);
-    digitalWrite(b1, HIGH);
-    digitalWrite(c1, LOW);
-    digitalWrite(d1, LOW);
-    digitalWrite(e1, HIGH);
-    digitalWrite(f1, LOW);
-    digitalWrite(g1, HIGH);
-  }
-  else if(numero == 3){
-    digitalWrite(a1, HIGH);
-    digitalWrite(b1, HIGH);
-    digitalWrite(c1, HIGH);
-    digitalWrite(d1, HIGH);
-    digitalWrite(e1, LOW);
-    digitalWrite(f1, LOW);
-    digitalWrite(g1, HIGH);
-  }
-  else if(numero == 4){
-    digitalWrite(a1, LOW);
-    digitalWrite(b1, HIGH);
-    digitalWrite(c1, HIGH);
-    digitalWrite(d1, LOW);
-    digitalWrite(e1, LOW);
-    digitalWrite(f1, HIGH);
-    digitalWrite(g1, HIGH);
-  }
-  else if(numero == 5){
-    digitalWrite(a1, HIGH);
-    digitalWrite(b1, LOW);
-    digitalWrite(c1, HIGH);
-    digitalWrite(d1, HIGH);
-    digitalWrite(e1, LOW);
-    digitalWrite(f1, HIGH);
-    digitalWrite(g1, HIGH);
-  }
-  else if(numero == 6){
-    digitalWrite(a1, HIGH);
-    digitalWrite(b1, LOW);
-    digitalWrite(c1, HIGH);
-    digitalWrite(d1, HIGH);
-    digitalWrite(e1, HIGH);
-    digitalWrite(f1, HIGH);
-    digitalWrite(g1, HIGH);
-  }
-  else if(numero == 7){
-    digitalWrite(a1, HIGH);
-    digitalWrite(b1, HIGH);
-    digitalWrite(c1, HIGH);
-    digitalWrite(d1, LOW);
-    digitalWrite(e1, LOW);
-    digitalWrite(f1, LOW);
-    digitalWrite(g1, LOW);
-  }
-  else if(numero == 8){
-    digitalWrite(a1, HIGH);
-    digitalWrite(b1, HIGH);
-    digitalWrite(c1, HIGH);
-    digitalWrite(d1, HIGH);
-    digitalWrite(e1, HIGH);
-    digitalWrite(f1, HIGH);
-    digitalWrite(g1, HIGH);
-  }
-  else if(numero == 9){
-    digitalWrite(a1, HIGH);
-    digitalWrite(b1, HIGH);
-    digitalWrite(c1, HIGH);
-    digitalWrite(d1, HIGH);
-    digitalWrite(e1, LOW);
-    digitalWrite(f1, HIGH);
-    digitalWrite(g1, HIGH);
-  }
-}*/
+
