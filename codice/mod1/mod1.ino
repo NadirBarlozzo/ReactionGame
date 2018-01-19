@@ -16,28 +16,30 @@ boolean firstCicle = true;
 /**
  * Array contenente i pins dei bottoni.
  */
-int buttonPins[] = {1,2,3,4,5,6,7,8,9,10};
-
+int buttonPins[] = {22,24,26,28,30,32,34,36,38,40};
 /**
  * Array contenente i pins dei led
  */
-int ledPins[] = {11,12,13,14,15,16,17,18,19,20};
+
+int ledPins[] = {23,25,27,29,31,33,35,37,39,41};
 
 /**
  * Il numero di millisecondi mancanti alla fine del gioco.
  */
-int countdown = 60000;
+long countdown = 60000;
 
 /**
  * Valore relativo al vecchio indice del led da accendere.
  */
-int lastNumber = -1;
+int lastNumber = NULL;
 
 /**
  * Valore relativo all'indice attuale del led da accendere.
  */
 int currentNumber = -1;
 
+
+int currentButton = -1;
 /**
  * Punteggio della partita
  */
@@ -45,6 +47,7 @@ int score = 0;
 int buzzerPin = 10;
 int delayValue = 10;
 
+/*
 //Pin per il sette segmenti
 //barra superiore
 int a = 9;
@@ -75,12 +78,12 @@ int e2 = 20;
 //superiore sinistra
 int f2 = 21;
 //centrale
-int g2 = 22;
+int g2 = 22;*/
 
 void setup() 
 {
   //Funzionamento dei pin
-  pinMode(a, OUTPUT);
+  /*pinMode(a, OUTPUT);
   pinMode(b, OUTPUT);
   pinMode(c, OUTPUT);
   pinMode(d, OUTPUT);
@@ -94,7 +97,7 @@ void setup()
   pinMode(d2, OUTPUT);
   pinMode(e2, OUTPUT);
   pinMode(f2, OUTPUT);
-  pinMode(g2, OUTPUT);
+  pinMode(g2, OUTPUT);*/
   
   for(int i = 0; i < sizeof(buttonPins)/sizeof(buttonPins[0]); i++)
   {
@@ -111,7 +114,10 @@ void setup()
 }
 
 void loop() 
-{ 
+{     Serial.print("Countdown: ");
+    Serial.println(countdown);
+  Serial.println("Inizio ciclo");
+  
   if(firstCicle)
   {
     lightLed();
@@ -122,10 +128,14 @@ void loop()
   {
     currentButtonsState[i] = debounce(i); 
     //digitalRead(buttonPins[currentNumber]);
-
+    Serial.print("bottone corrente: ");
+    Serial.println(buttonPins[i]);
     if(currentButtonsState[i] == true && currentButtonsState[i] != lastButtonsState[i] && i == currentNumber)
     {
+      Serial.println("premuto correttamente");
       score++;
+      Serial.print("Score: ");
+      Serial.println(score);
       digitalWrite(buzzerPin, HIGH); 
       delay(delayValue); 
       digitalWrite(buzzerPin, LOW);
@@ -133,27 +143,33 @@ void loop()
     }
     
     lastButtonsState[i] = currentButtonsState[i];
-    countdown--;
     //Stampa dei dati
-    Cifre(countdown, a,b,c,d,e,f,g);
-    Cifre(score, a2,b2,c2,d2,e2,f2,g2);
+    /*Cifre(countdown, a,b,c,d,e,f,g);
+    Cifre(score, a2,b2,c2,d2,e2,f2,g2);*/
     delay(1);
     
     if(countdown == 0)
     {
+      Serial.println("end");
+      countdown = 60000;
       exit(0);
     }
   } 
+    Serial.print("Countdown: ");
+    Serial.println(countdown);
+    countdown--;
 }
 
 boolean debounce(int n)
 {
-   boolean current = digitalRead(buttonPins[n]); 
+   boolean current = (digitalRead(buttonPins[n])); 
    if(lastButtonsState[n] != current)
    {
        delay(5);
        current = digitalRead(buttonPins[n]);
    }
+   Serial.print("stato bottone: ");
+   Serial.println(current);
    return current;
 }
 
@@ -170,14 +186,23 @@ void lightLed()
     }
   }
   lastNumber = currentNumber;
-
+    Serial.print("currentNumber: ");
+    Serial.println(currentNumber);
+    countdown--;
   for(int i = 0; i < sizeof(ledPins) / sizeof(ledPins[0]); i++)
   {
+    Serial.print("Spengo led ");
+    Serial.println(ledPins[i]);
     digitalWrite(ledPins[i], LOW);
   }
+  Serial.print("Accendo led ");
+  Serial.println(ledPins[currentNumber]);
   digitalWrite(ledPins[currentNumber], HIGH);
+  Serial.print("led da accendere:  ");
+  Serial.println(ledPins[currentNumber]);
+  currentButton = buttonPins[currentNumber];
 }
-//Metodo Per la stampa delle cifre
+/*//Metodo Per la stampa delle cifre
 void Cifre(float numero, int a1, int b1, int c1, int d1, int e1, int f1, int g1){
   if(numero == 1){
     digitalWrite(a1, LOW);
@@ -260,4 +285,4 @@ void Cifre(float numero, int a1, int b1, int c1, int d1, int e1, int f1, int g1)
     digitalWrite(f1, HIGH);
     digitalWrite(g1, HIGH);
   }
-}
+}*/
