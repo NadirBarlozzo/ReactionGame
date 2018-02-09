@@ -3,23 +3,37 @@
 #include <Ethernet.h>
 
 int count = 0;
-int score = 0;
-int modality = 0;
+String score = "0";
+String modality = "0";
+String data = "";
 
 byte mac[] = {
-  0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED };
+  0x90, 0xA2, 0xDA, 0x10, 0x25, 0xFE };
   
-IPAddress ip(192,168,0,16);
-
-char server[] = "localhost"; 
+byte ip[] = {192, 168, 5, 16}; //(192,168,5,16);
+IPAddress server(192,168,5,17);
 
 EthernetClient client;
 
 void setup() {
   Wire.begin(8);
   Wire.onReceive(receiveEvent);
+  Serial.begin(9600);
+  score = "10";
+  modality = "18";
   Ethernet.begin(mac, ip);
-  Serial.begin(9600); 
+  int conn = client.connect(server, 444);
+  if (conn) {
+    Serial.println("connesso");
+    client.println("GET /reactiongame/insert.php?score="+score+"&modality="+modality+" HTTP/1.1");
+    client.println("Host: 192.168.5.17");
+    client.println("Connection: close");
+    client.println();
+  }
+ else {
+    Serial.println("--> connection failed\n");
+    Serial.println(conn);
+ }
 }
 
 void receiveEvent(int howMany) {
@@ -32,25 +46,9 @@ void receiveEvent(int howMany) {
 }
 
 void loop() {
-  delay(1000);
-  if (client.connect(server, 3600) && count == 2) {
-    client.print("GET /reactiongame/insert.php?"); 
-    client.print("score="); // This
-    client.print(score);
-    client.print("&modality="); 
-    client.print(modality);
-    client.println(" HTTP/1.1"); // Part of the GET request
-    client.println("Host: localhost:3600"); // IMPORTANT: If you are using XAMPP you will have to find out the IP address of your computer and put it here (it is explained in previous article). If you have a web page, enter its address (ie.Host: "www.yourwebpage.com")
-    client.println("Connection: close"); // Part of the GET request telling the server that we are over transmitting the message
-    client.println();
-    client.println();
-    client.stop();
-  }
- else {
-    Serial.println("--> connection failed\n");
- }
-  delay(10000);
-}
+}  
+
+
 
 
 

@@ -20,7 +20,7 @@ void setup()
   randomSeed(analogRead(0));
   pinMode(buzzerPin, OUTPUT);
   pinMode(buzzerPin2, OUTPUT);
-  for(int i = 0; i < sizeof(buttonPins) / sizeof(buttonPins[0]); i++)
+  for (int i = 0; i < sizeof(buttonPins) / sizeof(buttonPins[0]); i++)
   {
     //Assegno i pin ai relativi bottoni e led.
     pinMode(buttonPins[i], INPUT);
@@ -35,112 +35,113 @@ void setup()
 }
 void loop()
 {
-  
-  if(firstCicle)
+
+  if (firstCicle)
   {
     boolean led = HIGH;
-    for(int i = 0; i < 6; i++){
-      
-      for(int j = 0; j < sizeof(ledPins) / sizeof(ledPins[0]); j++)
+    for (int i = 0; i < 6; i++) {
+
+      for (int j = 0; j < sizeof(ledPins) / sizeof(ledPins[0]); j++)
       {
-      digitalWrite(ledPins[j], led);
+        digitalWrite(ledPins[j], led);
       }
       delay(500);
       led = !led;
-      if(i % 2 == 0){
-        
-      digitalWrite(buzzerPin, HIGH);
-      digitalWrite(buzzerPin2, HIGH); 
-      delay(delayValue); 
-      digitalWrite(buzzerPin, LOW);
-      digitalWrite(buzzerPin2, LOW);
+      if (i % 2 == 0) {
+
+        digitalWrite(buzzerPin, HIGH);
+        digitalWrite(buzzerPin2, HIGH);
+        delay(delayValue);
+        digitalWrite(buzzerPin, LOW);
+        digitalWrite(buzzerPin2, LOW);
       }
     }
     start();
-    firstCicle = false;  
+    firstCicle = false;
   }
   Serial.println("go!");
-  while(pressed == false && error == false && timeElapsed() <= timeReflection){
-    for(int i = 0; i < sizeof(buttonPins) / sizeof(buttonPins[i]);i++){
+  while (pressed == false && error == false && timeElapsed() <= timeReflection) {
+    for (int i = 0; i < sizeof(buttonPins) / sizeof(buttonPins[i]); i++) {
       currentButtonsState[i] = debounce(i);
-      if(lastButtonsState[i] == LOW && currentButtonsState[i] == HIGH && i == currentNumber)
+      if (lastButtonsState[i] == LOW && currentButtonsState[i] == HIGH && i == currentNumber)
       {
         pressed = true;
       }
-      if(lastButtonsState[i] == LOW &&  currentButtonsState[i] == HIGH && i != currentNumber){
+      if (lastButtonsState[i] == LOW &&  currentButtonsState[i] == HIGH && i != currentNumber) {
         error = true;
       }
       lastButtonsState[i] = currentButtonsState[i];
     }
   }
   Serial.println("finish check!");
-  if(pressed == true){
-    digitalWrite(buzzerPin, HIGH); 
-    delay(delayValue); 
+  if (pressed == true) {
+    digitalWrite(buzzerPin, HIGH);
+    delay(delayValue);
     digitalWrite(buzzerPin, LOW);
     score++;
+    Serial.println(score);
   }
-  if(error == true){
-    timeReflection -= 50; 
+  if (error == true) {
+    timeReflection -= 50;
   }
   pressed = false;
   error = false;
-  shot--;  
+  shot--;
   start();
-  if(shot <= 0){
-    for(int i = 0; i < sizeof(ledPins) / sizeof(ledPins[0]); i++)
+  if (shot <= 0) {
+    for (int i = 0; i < sizeof(ledPins) / sizeof(ledPins[0]); i++)
     {
       digitalWrite(ledPins[i], LOW);
     }
     digitalWrite(buzzerPin, HIGH);
-    digitalWrite(buzzerPin2, HIGH); 
-    delay(25*delayValue); 
+    digitalWrite(buzzerPin2, HIGH);
+    delay(25 * delayValue);
     digitalWrite(buzzerPin, LOW);
     digitalWrite(buzzerPin2, LOW);
     exit(0);
   }
 }
 
-  
 
-void start(){
+
+void start() {
 
   boolean a = true;
-  while(a)
+  while (a)
   {
-    currentNumber = random(0,4); 
-    
-    if(currentNumber != lastNumber)
+    currentNumber = random(0, 4);
+
+    if (currentNumber != lastNumber)
     {
       a = false;
     }
   }
   lastNumber = currentNumber;
-    for(int i = 0; i < sizeof(ledPins) / sizeof(ledPins[0]); i++)
-    {
-      digitalWrite(ledPins[i], LOW);
-    }
-    
-    digitalWrite(ledPins[currentNumber], HIGH);
-    delay(1000);
-    startTime = millis();
-    Serial.println(startTime);
+  for (int i = 0; i < sizeof(ledPins) / sizeof(ledPins[0]); i++)
+  {
+    digitalWrite(ledPins[i], LOW);
+  }
+
+  digitalWrite(ledPins[currentNumber], HIGH);
+  //delay(1000);
+  startTime = millis();
+  Serial.println(startTime);
 
 }
 
-float timeElapsed(){
-   elapsedTime = (millis() - startTime);
-   elapsedTime = elapsedTime;
-   return elapsedTime;
+float timeElapsed() {
+  elapsedTime = (millis() - startTime);
+  elapsedTime = elapsedTime;
+  return elapsedTime;
 }
 
 boolean debounce(int n)
 {
-   boolean current = digitalRead(buttonPins[n]); 
-   if(lastButtonsState[n] != current)
-   {
-       delay(1);
-       current = digitalRead(buttonPins[n]);
-   }
-   return current;
+  boolean current = digitalRead(buttonPins[n]);
+  if (lastButtonsState[n] != current)
+  {
+    delay(1);
+    current = digitalRead(buttonPins[n]);
+  }
+  return current;
 }

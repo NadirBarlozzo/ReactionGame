@@ -1,8 +1,8 @@
 boolean lastButtonsState[6];
 boolean currentButtonsState[6];
 boolean firstCicle = true;
-int buttonPins[] = {1,2,3,4,5,6};
-int ledPins[] = {7,8,9,10,11,12};
+int buttonPins[] = {1, 2, 3, 4, 5, 6};
+int ledPins[] = {7, 8, 9, 10, 11, 12};
 long countdown = 100000;
 
 int lastNumber = NULL;
@@ -72,8 +72,8 @@ void loop()
     {
       score++;
       digitalWrite(buzzerPin, HIGH);
-      digitalWrite(buzzerPin2, HIGH); 
-      delay(delayValue); 
+      digitalWrite(buzzerPin2, HIGH);
+      delay(delayValue);
       digitalWrite(buzzerPin, LOW);
       digitalWrite(buzzerPin2, LOW);
       lightLed();
@@ -85,13 +85,13 @@ void loop()
 
     if (millis() - timer >= countdown || score == 50)
     {
-      for(int i = 0; i < sizeof(ledPins) / sizeof(ledPins[0]); i++)
+      for (int i = 0; i < sizeof(ledPins) / sizeof(ledPins[0]); i++)
       {
         digitalWrite(ledPins[i], LOW);
       }
       digitalWrite(buzzerPin, HIGH);
-      digitalWrite(buzzerPin2, HIGH); 
-      delay(25*delayValue); 
+      digitalWrite(buzzerPin2, HIGH);
+      delay(25 * delayValue);
       digitalWrite(buzzerPin, LOW);
       digitalWrite(buzzerPin2, LOW);
       exit(0);
