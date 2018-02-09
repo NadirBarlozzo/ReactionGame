@@ -9,9 +9,9 @@ decode_results results;
 
 long arraySelected[2];
 int arrayFinal[2];
-bool a = true;
 long val;
 int modSelected;
+bool b = true;
 
 long button0 = 16738455;
 long button1 = 16724175;
@@ -38,6 +38,7 @@ void loop()
     if (val == buttonS)
     {
       Serial.println("Premuto +");
+      bool a = true;
       while (a)
       {
         if (irrecv.decode(&results))
@@ -57,7 +58,7 @@ void loop()
             delay(1);
             irrecv.resume();
             while (a)
-            {
+            { 
               if (irrecv.decode(&results))
               {
                 val = results.value;
@@ -71,6 +72,7 @@ void loop()
                 {
                   Serial.println("Selezionato secondo numero");
                   arraySelected[1] = val;
+
                   a = false;
 
                   convertValueToArray();
@@ -90,14 +92,19 @@ void loop()
 
   if(modSelected != NULL)
   {
-    if(modSelected != -1)
+    if(b)
     {
-      Serial.print("Modalita' selezionata: ");
-      Serial.println(modSelected); 
-    }
-    else
-    {
-      Serial.println("Modalita' fino a numero 23"); 
+      if(modSelected != -1)
+      {
+        Serial.print("Modalita' selezionata: ");
+        Serial.println(modSelected); 
+        
+      }
+      else
+      {
+        Serial.println("Modalita' fino a numero 23"); 
+      }
+      b = false;
     }
   }
 }
