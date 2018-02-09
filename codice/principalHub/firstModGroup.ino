@@ -23,6 +23,9 @@ int dimensions = 0;
    Punteggio della partita
 */
 int score = 0;
+
+double timerGame = 0;
+
 /**
    Booleano che verifica se si è presenti nel primo ciclo.
 */
@@ -51,8 +54,7 @@ void firstModGroup(int d, long t, boolean octave)
       {
         //Serial.println("premuto correttamente");
         score++;
-        Serial.print("Score: ");
-        Serial.println(score);
+
         digitalWrite(buzzerPin, HIGH);
         digitalWrite(buzzerPin2, HIGH);
         delay(delayValue);
@@ -64,6 +66,7 @@ void firstModGroup(int d, long t, boolean octave)
       lastButtonsState[i] = currentButtonsState[i];
       delay(1);
       Serial.println(millis() - timer);
+      timerGame = (millis() - timer) / 1000;
       if ((millis() - timer) >= countdown)
       {
         for (int i = 0; i < dimensions; i++)
@@ -85,20 +88,34 @@ void firstModGroup(int d, long t, boolean octave)
               digitalWrite(ledPins[i], LOW);
             }
             scores[0] = score;
-            scores[1] = millis() - timer;
+            scores[1] = timerGame;
             clearVariables();
             return;
           }
           timer = millis();
         } else {
           scores[0] = score;
-          scores[1] = millis() - timer;
+          scores[1] = timerGame;
           clearVariables();
           return;
         }
-
-
       }
+    }
+    
+    if (true/*timerGame % 0.5 > 0 && timerGame % 0.5 < 0.1*/) {
+      lcd.clear();
+
+      lcd.setCursor(0, 0);
+      lcd.print("Tempo: ");
+
+      lcd.setCursor(0, 2);
+      lcd.print("Punteggio: ");
+
+      lcd.setCursor(0, 1);
+      lcd.print(timerGame);
+
+      lcd.setCursor(0, 3);
+      lcd.print(score);
     }
   }
 }
@@ -145,28 +162,28 @@ void lightLed()
     Serial.println(ledPins[currentNumber]);*/
 }
 
-void clearVariables(){
-countdown = 0;
+void clearVariables() {
+  countdown = 0;
 
-/**
-   Valore relativo al vecchio indice del led da accendere.
-*/
-lastNumber = NULL;
+  /**
+     Valore relativo al vecchio indice del led da accendere.
+  */
+  lastNumber = NULL;
 
-/**
-   Valore relativo all'indice attuale del led da accendere.
-*/
-currentNumber = -1;
+  /**
+     Valore relativo all'indice attuale del led da accendere.
+  */
+  currentNumber = -1;
 
-countdownLoop = 0;
+  countdownLoop = 0;
 
-timer = 0;
+  timer = 0;
 
-dimensions = 0;
-/**
-   Punteggio della partita
-*/
-score = 0;  
+  dimensions = 0;
+  /**
+     Punteggio della partita
+  */
+  score = 0;
 
-firstCicle = true;
+  firstCicle = true;
 }
