@@ -1,3 +1,14 @@
+#include <Wire.h>
+
+#include <FastIO.h>
+#include <I2CIO.h>
+#include <LCD.h>
+#include <LiquidCrystal.h>
+#include <LiquidCrystal_I2C.h>
+#include <LiquidCrystal_SR.h>
+#include <LiquidCrystal_SR2W.h>
+#include <LiquidCrystal_SR3W.h>
+
 #include <boarddefs.h>
 #include <IRremote.h>
 #include <IRremoteInt.h>
@@ -7,6 +18,7 @@
 const byte RECV_PIN = 50;
 IRrecv irrecv(RECV_PIN);
 decode_results results;
+LiquidCrystal_I2C lcd(0x3F, 2, 1, 0, 4, 5, 6, 7, 3, POSITIVE);
 
 long arraySelected[2];
 int arrayFinal[2];
@@ -40,11 +52,16 @@ int ledPins[] = {23, 25, 27, 29, 31, 33, 35, 37, 39, 41, 43, 45};
 
 long buttons[] = {16738455, 16724175, 16718055, 16743045, 16716015, 16726215, 16734885, 16728765, 16730805, 16732845, 16748655, 16754775};
 
-int scores[] = {0,0};
+int scores[] = {0, 0};
 
 void setup() {
   //Funzionamento dei pin
-
+  Wire.begin();
+  // inizializzazione dell'oggetto lcd_I2C
+  lcd.begin(20, 4);
+  lcd.clear();
+  //accensione retro illuminazione
+  lcd.backlight();
   randomSeed(analogRead(0));
   pinMode(buzzerPin, OUTPUT);
   pinMode(buzzerPin2, OUTPUT);
@@ -88,6 +105,7 @@ void loop()
           val = results.value;
           if (isValid())
           {
+
             Serial.println("Selezionato primo numero");
             arraySelected[0] = val;
             delay(1);
@@ -122,10 +140,24 @@ void loop()
       }
     }
     irrecv.resume();
+    lcd.clear();
+
+    lcd.setCursor(0, 0);
+    lcd.print("Modalità: ");
+
+    lcd.setCursor(0, 1);
+    lcd.print(val);
   }
 
   if (modSelected != NULL && modSelected < 24 && modSelected > 0)
   {
+    lcd.clear();
+
+    lcd.setCursor(0, 0);
+    lcd.print("Modalità: ");
+
+    lcd.setCursor(0, 1);
+    lcd.print(val);
     boolean led = true;
     for (int i = 0; i < 6; i++) {
 
