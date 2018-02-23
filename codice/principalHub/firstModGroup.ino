@@ -4,25 +4,10 @@
 */
 long countdown = 0;
 
-/**
-   Valore relativo al vecchio indice del led da accendere.
-*/
-int lastNumber = NULL;
-
-/**
-   Valore relativo all'indice attuale del led da accendere.
-*/
-int currentNumber = -1;
 
 int countdownLoop = 0;
 
-float timer = 0;
 
-int dimensions = 0;
-/**
-   Punteggio della partita
-*/
-int score = 0;
 
 double timerGame = 0;
 
@@ -89,20 +74,20 @@ void firstModGroup(int d, long t, boolean octave)
             }
             scores[0] = score;
             scores[1] = timerGame;
-            clearVariables();
+            clearVariables1();
             return;
           }
           timer = millis();
         } else {
           scores[0] = score;
           scores[1] = timerGame;
-          clearVariables();
+          clearVariables1();
           return;
         }
       }
     }
     
-    if (true/*timerGame % 0.5 > 0 && timerGame % 0.5 < 0.1*/) {
+    if (true) {
       lcd.clear();
 
       lcd.setCursor(0, 0);
@@ -120,55 +105,13 @@ void firstModGroup(int d, long t, boolean octave)
   }
 }
 
-boolean debounce(int n)
-{
-  boolean current = (digitalRead(buttonPins[n]));
-  if (lastButtonsState[n] != current)
-  {
-    delay(1);
-    current = digitalRead(buttonPins[n]);
-  }
-  //Serial.print("stato bottone: ");
-  //Serial.println(current);
-  return current;
-}
-
-void lightLed()
-{
-  boolean a = true;
-  while (a)
-  {
-
-    currentNumber = random(0, dimensions);
-
-    if (currentNumber != lastNumber)
-    {
-      a = false;
-    }
-  }
-  lastNumber = currentNumber;
-  //Serial.print("currentNumber: ");
-  //Serial.println(currentNumber);
-  for (int i = 0; i < dimensions; i++)
-  {
-    //Serial.print("Spengo led ");
-    //Serial.println(ledPins[i]);
-    digitalWrite(ledPins[i], LOW);
-  }
-  //Serial.print("Accendo led ");
-  //Serial.println(ledPins[currentNumber]);
-  digitalWrite(ledPins[currentNumber], HIGH);
-  /*Serial.print("led da accendere:  ");
-    Serial.println(ledPins[currentNumber]);*/
-}
-
-void clearVariables() {
+void clearVariables1() {
   countdown = 0;
 
   /**
      Valore relativo al vecchio indice del led da accendere.
   */
-  lastNumber = NULL;
+  lastNumber = -1;
 
   /**
      Valore relativo all'indice attuale del led da accendere.
