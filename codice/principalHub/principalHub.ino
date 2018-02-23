@@ -48,9 +48,15 @@ int buzzerPin = 7;
 int buzzerPin2 = 6;
 int delayValue = 20;
 
+int lastNumber = -1;
+int currentNumber = -1;
+float timer = 0;
+int dimensions = 0;
+int score = 0;
+
 int ledPins[] = {23, 25, 27, 29, 31, 33, 35, 37, 39, 41, 43, 45};
 
-long buttons[] = {16738455, 16724175, 16718055, 16743045, 16716015, 16726215, 16734885, 16728765, 16730805, 16732845, 16748655, 16754775};
+long buttons[] = {16738455, 16724175, 16718055, 16743045, 16716015, 16726215, 16734885, 16728765, 16730805, 16732845, 16748655};
 
 int scores[] = {0, 0};
 
@@ -90,14 +96,16 @@ boolean isValid() {
 
 void loop()
 {
-  bool a = true;
   if (irrecv.decode(&results))
   {
     val = results.value;
     if (val == buttons[10])
     {
+      modSelected = 0;
+      arraySelected[0] = 0;
+      arraySelected[1] = 0;
       Serial.println("Premuto +");
-      while (a)
+      while (true)
       {
         if (irrecv.decode(&results))
         {
@@ -105,59 +113,33 @@ void loop()
           val = results.value;
           if (isValid())
           {
-
-            Serial.println("Selezionato primo numero");
-            arraySelected[0] = val;
+            arraySelected[0] = arraySelected[1];
+            arraySelected[1] = val;
             delay(1);
             irrecv.resume();
-            while (a)
-            {
-              if (irrecv.decode(&results))
-              {
-                val = results.value;
-                if (val == buttons[10]) {
-                  arraySelected[1] = arraySelected[0];
-                  arraySelected[0] = buttons[0];
-                  a = false;
-
-                } else if (isValid())
-                {
-                  Serial.println("Selezionato secondo numero");
-                  arraySelected[1] = val;
-                  a = false;
-                }
-                irrecv.resume();
-              }
-            }
             convertValueToArray();
-            Serial.println(arrayFinal[0]);
-            Serial.println(arrayFinal[1]);
             modSelected = convertArrayToNumber();
+            lcd.clear();
+
+            lcd.setCursor(0, 0);
+            lcd.print("Modalità: ");
+
+            lcd.setCursor(0, 1);
+            lcd.print(modSelected);
+
+            if (val == buttons[10]) {
+              break;
+            }
           }
           irrecv.resume();
         }
-
+        irrecv.resume();
       }
     }
-    irrecv.resume();
-    lcd.clear();
-
-    lcd.setCursor(0, 0);
-    lcd.print("Modalità: ");
-
-    lcd.setCursor(0, 1);
-    lcd.print(val);
   }
 
   if (modSelected != NULL && modSelected < 24 && modSelected > 0)
   {
-    lcd.clear();
-
-    lcd.setCursor(0, 0);
-    lcd.print("Modalità: ");
-
-    lcd.setCursor(0, 1);
-    lcd.print(val);
     boolean led = true;
     for (int i = 0; i < 6; i++) {
 
@@ -168,7 +150,10 @@ void loop()
       delay(500);
       led = !led;
       if (i % 2 == 0) {
+        lcd.clear();
 
+        lcd.setCursor(0, 0);
+        lcd.print(3 - i / 2);
         digitalWrite(buzzerPin, HIGH);
         digitalWrite(buzzerPin2, HIGH);
         delay(delayValue);
@@ -176,6 +161,11 @@ void loop()
         digitalWrite(buzzerPin2, LOW);
       }
     }
+    digitalWrite(buzzerPin, HIGH);
+    digitalWrite(buzzerPin2, HIGH);
+    delay(delayValue * 2);
+    digitalWrite(buzzerPin, LOW);
+    digitalWrite(buzzerPin2, LOW);
     switch (modSelected) {
 
       case 1:
@@ -195,7 +185,12 @@ void loop()
         break;
 
       case 3:
-
+        thirdModGroup(2, true, 2);
+        secondModGroup(10, 50);
+        Serial.print("result:     ");
+        Serial.print(scores[0]);
+        Serial.print(",     ");
+        Serial.println(scores[1]);
         break;
 
       case 4:
@@ -263,11 +258,19 @@ void loop()
         break;
 
       case 17:
-
+        secondModGroup(6, 25);
+        Serial.print("result:     ");
+        Serial.print(scores[0]);
+        Serial.print(",     ");
+        Serial.println(scores[1]);
         break;
 
       case 18:
-
+        secondModGroup(6, 50);
+        Serial.print("result:     ");
+        Serial.print(scores[0]);
+        Serial.print(",     ");
+        Serial.println(scores[1]);
         break;
 
       case 19:
@@ -305,7 +308,52 @@ void loop()
     scores[1] = 0;
     modSelected = 0;
     delay(10);
+  } else {
+    lcd.clear();
+
+    lcd.setCursor(0, 0);
+    lcd.print("La modalita ");
+    lcd.setCursor(12, 0);
+    lcd.print(modSelected);
+    lcd.setCursor(14, 0);
+    lcd.print(" non esiste,");
+    lcd.setCursor(0, 1);
+    lcd.print("Modalita disponibili:");
+    lcd.setCursor(0, 2);
+    lcd.print("1 - 23");
   }
+}
+
+
+boolean debounce(int n)
+{
+  boolean current = (digitalRead(buttonPins[n]));
+  if (lastButtonsState[n] != current)
+  {
+    delay(1);
+    current = digitalRead(buttonPins[n]);
+  }
+  return current;
+}
+
+void lightLed()
+{
+  while (true)
+  {
+    currentNumber = random(0, dimensions);
+
+    if (currentNumber != lastNumber)
+    {
+      break;
+    }
+  }
+  lastNumber = currentNumber;
+
+  for (int i = 0; i < dimensions; i++)
+  {
+    digitalWrite(ledPins[i], LOW);
+  }
+  digitalWrite(ledPins[currentNumber], HIGH);
 }
 
 void convertValueToArray()
