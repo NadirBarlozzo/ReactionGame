@@ -1,12 +1,17 @@
 
 void firstModGroup(int d, long t, boolean octave)
 {
-  dimensions = d;
-  countdown = t;
-  boolean led = HIGH;
-  timer = millis();
-  setNextButton();
   while (true) {
+    if (firstCicle)
+    {
+      dimensions = d;
+      countdown = t;
+      boolean led = HIGH;
+      timer = millis();
+      setNextButton();
+      firstCicle = false;
+    }
+
     for (int i = 0; i < dimensions; i++)
     {
       currentButtonsState[i] = debounce(i);

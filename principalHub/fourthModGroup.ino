@@ -1,38 +1,42 @@
 
 void fourthModGroup(boolean f)
 {
-  boolean flash = f;
-  boolean b = true;
-  boolean b2 = false;
-  digitalWrite(ledPins[10], HIGH);
-  while (b) {
-    for (int i = 0; i < sizeof(buttonPins) / sizeof(buttonPins[0]); i++) {
-      if (b2 == true) {
-        for (int i = 1; i < (sizeof(ledPins) / sizeof(ledPins[0])) - 2; i++)
-        {
-          digitalWrite(ledPins[i], HIGH);
+  while (true) {
+    if (firstCicle)
+    {
+      boolean flash = f;
+      boolean b = true;
+      boolean b2 = false;
+      digitalWrite(ledPins[10], HIGH);
+      while (b) {
+        for (int i = 0; i < sizeof(buttonPins) / sizeof(buttonPins[0]); i++) {
+          if (b2 == true) {
+            for (int i = 1; i < (sizeof(ledPins) / sizeof(ledPins[0])) - 2; i++)
+            {
+              digitalWrite(ledPins[i], HIGH);
+            }
+          }
+          currentButtonsState[i] = debounce(i);
+          if (currentButtonsState[i] == true && currentButtonsState[i] != lastButtonsState[i] && i == 10) {
+            b2 = true;
+            digitalWrite(ledPins[10], LOW);
+          } else if (currentButtonsState[i] == true && currentButtonsState[i] != lastButtonsState[i] && i >= 1 && i <= 8 && b2 == true) {
+            selectedTime = 1000 * i;
+            b = false;
+          }
         }
       }
-      currentButtonsState[i] = debounce(i);
-      if (currentButtonsState[i] == true && currentButtonsState[i] != lastButtonsState[i] && i == 10) {
-        b2 = true;
-        digitalWrite(ledPins[10], LOW);
-      } else if (currentButtonsState[i] == true && currentButtonsState[i] != lastButtonsState[i] && i >= 1 && i <= 8 && b2 == true) {
-        selectedTime = 1000 * i;
-        b = false;
+      for (int i = 1; i < (sizeof(ledPins) / sizeof(ledPins[0])) - 1; i++)
+      {
+        digitalWrite(ledPins[i], LOW);
       }
+      numButtons = random(1, 7);
+      defineScheme(numButtons);
+      for (int i = 0; i < 10; i++) {
+        pressedNumbers[i] = false;
+      }
+      firstCicle = false;
     }
-  }
-  for (int i = 1; i < (sizeof(ledPins) / sizeof(ledPins[0])) - 1; i++)
-  {
-    digitalWrite(ledPins[i], LOW);
-  }
-  numButtons = random(1, 7);
-  defineScheme(numButtons);
-  for (int i = 0; i < 10; i++) {
-    pressedNumbers[i] = false;
-  }
-  while (true) {
 
     for (int i = 0; i < (sizeof(buttonPins) / sizeof(buttonPins[0])) - 1; i++)
     {

@@ -14,9 +14,6 @@
 #include <IRremoteInt.h>
 #include <ir_Lego_PF_BitStreamEncoder.h>
 
-#include <Ethernet2.h>
-#include <SPI.h>
-
 const byte RECV_PIN = 50;
 IRrecv irrecv(RECV_PIN);
 decode_results results;
@@ -74,43 +71,35 @@ long countdown = 0;
 int countdownLoop = 0;
 
 
+
 double timerGame = 0;
 
 /**
    Booleano che verifica se si è presenti nel primo ciclo.
 */
 boolean corner;
+boolean firstCicle = true;
 boolean pressed = false;
 float startTime;
 float elapsedTime;
 float timeReflection = 1000;
 int shot = 100;
 boolean error = false;
+int indice = 0;
 
-//variabili del fourthModGroup
 long selectedTime = 1000;
+
 int chosenNumbers[6] = { -1, -1, -1, 1, -1, -1};
+
 int discardedNumbers[9] = { -1, -1, -1, 1, -1, -1, -1, -1, -1};
+
 boolean pressedNumbers[10];
 int scheme = 0;
 int counter = 0;
 int numButtons = 0;
 boolean flash = true;
 
-//variabili della mod 23
-int indice = 0;
-int buttonPinsSelected[11];
-int randomValues[11];
-int timeArray[10];
-int timecount = 0;
-int countRandom = 0;
 
-//variabili per collegare Arduino a DB SQL
-byte mac[] = {0x90, 0xA2, 0xDA, 0x11, 0x1D, 0x55};
-IPAddress ip(192, 168, 5, 16);
-IPAddress server(192, 168, 5, 17);
-EthernetClient client;
-int conn;
 
 void setup() {
   //Funzionamento dei pin
@@ -135,8 +124,6 @@ void setup() {
   }
   Serial.begin(9600);
   irrecv.enableIRIn();
-  Ethernet.begin(mac, ip);
-  conn = client.connect(server, 3600);
 }
 boolean isValid() {
   for (int i = 0; i < (sizeof(buttons) / sizeof(buttons[0])) - 2; i++) {
@@ -193,13 +180,6 @@ void loop()
 
   if (modSelected != NULL && modSelected < 24 && modSelected > 0)
   {
-    if (conn) {
-      Serial.println("connesso");
-      client.println("GET /reactiongame/insert.php?score=&modality= HTTP/1.1");
-      client.println("Host: 192.168.5.17");
-      client.println("Connection: close");
-      client.println();
-    }
     boolean led = true;
     for (int i = 0; i < 6; i++) {
 
@@ -384,11 +364,7 @@ void loop()
         break;
 
       case 23:
-        mod23();
-        Serial.print("result:     ");
-        Serial.print(scores[0]);
-        Serial.print(",     ");
-        Serial.println(scores[1]);
+
         break;
 
 

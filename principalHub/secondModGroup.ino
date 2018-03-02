@@ -2,12 +2,16 @@
 
 void secondModGroup(int dim, int colpi)
 {
-  dimensions = dim;
-  shot = colpi;
-  timer = millis();
-  setNextButton();
-
   while (true) {
+    if (firstCicle)
+    {
+      dimensions = dim;
+      shot = colpi;
+      timer = millis();
+      setNextButton();
+      firstCicle = false;
+    }
+
     for (int i = 0; i < dimensions; i++)
     {
       currentButtonsState[i] = debounce(i);

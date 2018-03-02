@@ -1,11 +1,15 @@
 
 void thirdModGroup(int dim, int colpi, boolean angolo)
 {
-  corner = angolo;
-  dimensions = dim;
-  shot = colpi;
-  start();
   while (true) {
+    if (firstCicle)
+    {
+      corner = angolo;
+      dimensions = dim;
+      shot = colpi;
+      start();
+      firstCicle = false;
+    }
     int counter = 0;
     while (pressed == false && error == false && (timeElapsed() <= timeReflection || !corner)) {
       for (int i = 0; i < dimensions; i++) {
