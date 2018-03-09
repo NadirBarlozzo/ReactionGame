@@ -199,7 +199,6 @@ void loop()
   digitalWrite(buzzerPin, LOW);
   digitalWrite(buzzerPin2, LOW);
   lcd.clear();
-  conn = client.connect(server, 3305);
   switch (modeSelected) {
 
     case 1:

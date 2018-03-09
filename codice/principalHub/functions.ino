@@ -28,6 +28,7 @@ void setNextButton()
     digitalWrite(ledPins[i], LOW);
   }
   digitalWrite(ledPins[currentNumber], HIGH);
+  return;
 }
 
 void stampLCD() {

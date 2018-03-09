@@ -25,7 +25,7 @@ void firstModGroup(int d, long t, boolean octave)
       lastButtonsState[i] = currentButtonsState[i];
       delay(1);
       timerGame = millis() - timer;
-      if ((millis() - timer) >= countdown)
+      if (timerGame >= countdown)
       {
         for (int i = 0; i < dimensions; i++)
         {
