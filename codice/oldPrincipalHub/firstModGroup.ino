@@ -13,7 +13,7 @@ void firstModGroup(int d, long t, boolean octave)
       if (currentButtonsState[i] == true && currentButtonsState[i] != lastButtonsState[i] && i == currentNumber)
       {
         score++;
-        stampLCD();
+
         digitalWrite(buzzerPin, HIGH);
         digitalWrite(buzzerPin2, HIGH);
         delay(delayValue);
@@ -24,7 +24,7 @@ void firstModGroup(int d, long t, boolean octave)
 
       lastButtonsState[i] = currentButtonsState[i];
       delay(1);
-      timerGame = millis() - timer;
+      timerGame = (millis() - timer) / 1000;
       if ((millis() - timer) >= countdown)
       {
         for (int i = 0; i < dimensions; i++)
@@ -34,12 +34,7 @@ void firstModGroup(int d, long t, boolean octave)
         if (octave) {
           digitalWrite(buzzerPin, HIGH);
           digitalWrite(buzzerPin2, HIGH);
-          lcd.clear();
-          lcd.setCursor(0, 0);
-          lcd.print("SCAMBIATI CON UN ");
-          lcd.setCursor(0, 1);
-          lcd.print("ALTRO GIOCATORE");
-          delay(3000);
+          delay(2000);
           digitalWrite(buzzerPin, LOW);
           digitalWrite(buzzerPin2, LOW);
           countdownLoop++;
@@ -55,7 +50,6 @@ void firstModGroup(int d, long t, boolean octave)
             clearVariables();
             return;
           }
-          hz = 0;
           timer = millis();
         } else {
           scores[0] = score;
@@ -65,10 +59,8 @@ void firstModGroup(int d, long t, boolean octave)
         }
       }
     }
-    if (timerGame / 1000 >= hz) {
-      stampLCD();
-      hz = hz + 1;
-    }
+
+    stampLCD();
   }
 }
 

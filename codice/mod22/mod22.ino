@@ -176,14 +176,13 @@ void loop()
 boolean isChecked() {
 
   for (int i = 0; i < numButtons; i++) {
-    Serial.print("numero scelto: ");
-    Serial.println(chosenNumbers[0]);
-    Serial.print("     stato     ");
     Serial.println(pressedNumbers[chosenNumbers[i]]);
     if (pressedNumbers[chosenNumbers[i]] == true) {
+      Serial.println("FAIL");
       return false;
     }
   }
+  Serial.println("PASS");
   return true;
 }
 
@@ -196,11 +195,7 @@ void defineScheme(int n) {
         j = -1;
       }
     }
-    Serial.print("1.0: ");
-    Serial.println(currentNumber);
     chosenNumbers[i] = currentNumber;
-    Serial.println(i);
-    Serial.print("2.0: ");
     Serial.println(chosenNumbers[i]);
   }
   int savePoint = chosenNumbers[0];
@@ -208,43 +203,19 @@ void defineScheme(int n) {
   for (int i = 0; i < sizeof(ledPins) / sizeof(ledPins[0]); i++) {
     for (int j = 0; j < n; j++) {
       if (i == chosenNumbers[j]) {
-        Serial.print("3.0: ");
-        Serial.println(chosenNumbers[j]);
         digitalWrite(ledPins[i], HIGH);
-        Serial.print("4.0: ");
-        Serial.println(chosenNumbers[j]);
         break;
 
       }
-      Serial.print("i e count: ");
-      Serial.print(i);
-      Serial.print("      ");
-      Serial.println(count);
       if (j + 1 == n) {
-        Serial.print("5.0: ");
-        Serial.println(chosenNumbers[j]);
 
         discardedNumbers[count++] = i;
-        Serial.print("5.5: ");
-
-        Serial.println(j);
-        Serial.print("6.0: ");
-        Serial.println(chosenNumbers[0]);
         digitalWrite(ledPins[i], LOW);
-        Serial.print("7.0: ");
-        Serial.println(chosenNumbers[j]);
       }
     }
   }
-  for (int i = 0; i < sizeof(discardedNumbers) / sizeof(discardedNumbers[0]); i++) {
-    Serial.print("i e valore: ");
-    Serial.print(i);
-    Serial.print("      ");
-    Serial.println(discardedNumbers[i]);
-  }
   chosenNumbers[0] = savePoint;
-  Serial.print("8.0: ");
-  Serial.println(chosenNumbers[0]);
+
   delay(selectedTime - 300);
   digitalWrite(buzzerPin, HIGH);
   digitalWrite(buzzerPin2, HIGH);
