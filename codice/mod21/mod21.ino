@@ -174,7 +174,7 @@ void loop()
 boolean isChecked() {
 
   for (int i = 0; i < numButtons; i++) {
-    if (pressedNumbers[chosenNumbers[i]] == flash) {
+    if (pressedNumbers[chosenNumbers[i]]) {
       return false;
     }
   }

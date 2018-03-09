@@ -7,11 +7,13 @@ void thirdModGroup(int dim, int colpi, boolean angolo)
   start();
   while (true) {
     int counter = 0;
-    while (!pressed && !error && (timeElapsed() <= timeReflection || !corner)) {
+    while (pressed == false && error == false && (timeElapsed() <= timeReflection || !corner)) {
       for (int i = 0; i < dimensions; i++) {
         timerGame = millis() - startTime;
-        counter = i;
-        if (counter) {
+        stampLCD();
+        if (!corner) {
+          counter = i;
+        } else {
           switch (currentNumber) {
             case 2:
               counter = 8;
@@ -21,38 +23,26 @@ void thirdModGroup(int dim, int colpi, boolean angolo)
               break;
           }
         }
-
         currentButtonsState[i] = debounce(counter);
-
         if (lastButtonsState[i] == LOW && currentButtonsState[i] == HIGH && counter == currentNumber)
         {
           pressed = true;
         }
-        if (lastButtonsState[i] == LOW && currentButtonsState[i] == HIGH && counter != currentNumber || (!corner && timeElapsed() >= timeReflection)) {
-
+        if (lastButtonsState[i] == LOW &&  currentButtonsState[i] == HIGH && counter != currentNumber || (!corner && timeElapsed() <= timeReflection)) {
           error = true;
         }
         lastButtonsState[i] = currentButtonsState[i];
       }
     }
-    stampThirdLCD(colpi);
     if (pressed) {
       digitalWrite(buzzerPin, HIGH);
       delay(delayValue);
       digitalWrite(buzzerPin, LOW);
       score++;
+      Serial.println(score);
     }
     if (error) {
       timeReflection -= 50;
-    }
-    if (timeReflection < 200) {
-      lcd.setCursor(0, 1);
-
-      stampThirdLCD(colpi);
-      lcd.print("GAME OVER");
-
-      clearVariables();
-      return;
     }
     pressed = false;
     error = false;
@@ -75,9 +65,13 @@ void thirdModGroup(int dim, int colpi, boolean angolo)
         }
         digitalWrite(ledPins[n], LOW);
       }
+      digitalWrite(buzzerPin, HIGH);
+      digitalWrite(buzzerPin2, HIGH);
+      delay(25 * delayValue);
+      digitalWrite(buzzerPin, LOW);
+      digitalWrite(buzzerPin2, LOW);
       scores[0] = score;
       scores[1] = timerGame;
-      stampThirdLCD(colpi);
       clearVariables();
       return;
     }
@@ -100,32 +94,21 @@ void start() {
       }
     }
   }
-  int n = 0;
   lastNumber = currentNumber;
   for (int i = 0; i < dimensions; i++)
   {
-    n = i;
-    if (corner) {
-      switch (i) {
-        case 2:
-          n = 8;
-          break;
-        case 3:
-          n = 9;
-          break;
-      }
-    }
-    digitalWrite(ledPins[n], LOW);
+    digitalWrite(ledPins[i], LOW);
   }
 
   digitalWrite(ledPins[currentNumber], HIGH);
-  delay(200);
+  //delay(1000);
   startTime = millis();
 
 }
 
 float timeElapsed() {
   elapsedTime = (millis() - startTime);
+  elapsedTime = elapsedTime;
   return elapsedTime;
 }
 

@@ -7,7 +7,8 @@ echo "<style> td { border: 1px solid black; padding: 5px; } table { border-colla
 
 $servername = "localhost";
 $username = "root";
-$password = "root1";
+$password = "";
+//$password = "root1";
 $dbname = "reactiongame";
 
 $conn = new mysqli($servername, $username, $password, $dbname);

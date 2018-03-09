@@ -176,10 +176,13 @@ void loop()
 boolean isChecked() {
 
   for (int i = 0; i < numButtons; i++) {
+    Serial.println(pressedNumbers[chosenNumbers[i]]);
     if (pressedNumbers[chosenNumbers[i]] == true) {
+      Serial.println("FAIL");
       return false;
     }
   }
+  Serial.println("PASS");
   return true;
 }
 
@@ -193,6 +196,7 @@ void defineScheme(int n) {
       }
     }
     chosenNumbers[i] = currentNumber;
+    Serial.println(chosenNumbers[i]);
   }
   int savePoint = chosenNumbers[0];
   int count = 0;

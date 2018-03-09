@@ -51,7 +51,7 @@
 	<div id="wrapper">
 		<div class="container">
 			<div class="page-header">
-				<h3>Benvenuto <?php echo $row['Gio_Nome']; echo $_SESSION['game']; echo $_SESSION['user'] ?></h3>
+				<h3>Benvenuto <?php echo $row['Gio_Nome']; ?></h3>
 			</div>
 			<div class="row" id="start">
 				<div class="col-lg-12">
@@ -64,7 +64,7 @@
 				xmlhttp = new XMLHttpRequest();
 				xmlhttp.onreadystatechange = function() {
 		            if (this.readyState == 4 && this.status == 200) {
-		                document.getElementById("txtHint").innerHTML = this.responseText;
+		                document.getElementById("content").innerHTML = this.responseText;
 		            }
 		        };
 		        xmlhttp.open("GET","update.php");
@@ -73,7 +73,7 @@
 			}, 5000)
 	
 			</script>
-				<div id="txtHint"><b>Person info will be listed here...</b></div>
+			<div id="content"></div>
 
 			<div class="row" id="end" style="display:none">
 				<div class="col-lg-12">
